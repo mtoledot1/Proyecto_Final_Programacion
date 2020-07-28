@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.ups.modelo;
+package ec.edu.ups.controlador;
 
 /**
  *
  * @author braya
  */
-public class Cliente {
+public class ControladorBodega {
     
 }
