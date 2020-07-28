@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.ups.vista;
+package ec.edu.ups.ventanas;
 
 /**
  *
- * @author braya
+ * @author GAMER PC
  */
-public class VentanaRegistrar extends javax.swing.JInternalFrame {
+public class VentanaProductos extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form VentanaRegistrar
+     * Creates new form VentanaProductos
      */
-    public VentanaRegistrar() {
+    public VentanaProductos() {
         initComponents();
     }
 
@@ -26,6 +26,8 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        setClosable(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
