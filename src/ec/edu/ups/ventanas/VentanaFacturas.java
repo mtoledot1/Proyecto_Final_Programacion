@@ -5,6 +5,11 @@
  */
 package ec.edu.ups.ventanas;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author GAMER PC
@@ -14,8 +19,100 @@ public class VentanaFacturas extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaFacturas
      */
+    
+    private String mensaje;
+    private String mensajeError;
+    
     public VentanaFacturas() {
         initComponents();
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
+    }
+
+    public JButton getBtnCrear() {
+        return btnCrear;
+    }
+
+    public void setBtnCrear(JButton btnCrear) {
+        this.btnCrear = btnCrear;
+    }
+
+    public JLabel getLbFecha() {
+        return lbFecha;
+    }
+
+    public void setLbFecha(JLabel lbFecha) {
+        this.lbFecha = lbFecha;
+    }
+
+    public JLabel getLbIVA() {
+        return lbIVA;
+    }
+
+    public void setLbIVA(JLabel lbIVA) {
+        this.lbIVA = lbIVA;
+    }
+
+    public JLabel getLbSubtotal() {
+        return lbSubtotal;
+    }
+
+    public void setLbSubtotal(JLabel lbSubtotal) {
+        this.lbSubtotal = lbSubtotal;
+    }
+
+    public JLabel getLbTotal() {
+        return lbTotal;
+    }
+
+    public void setLbTotal(JLabel lbTotal) {
+        this.lbTotal = lbTotal;
+    }
+
+    public JTextField getTxtFecha() {
+        return txtFecha;
+    }
+
+    public void setTxtFecha(JTextField txtFecha) {
+        this.txtFecha = txtFecha;
+    }
+
+    public JTextField getTxtIVA() {
+        return txtIVA;
+    }
+
+    public void setTxtIVA(JTextField txtIVA) {
+        this.txtIVA = txtIVA;
+    }
+
+    public JTextField getTxtSubtotal() {
+        return txtSubtotal;
+    }
+
+    public void setTxtSubtotal(JTextField txtSubtotal) {
+        this.txtSubtotal = txtSubtotal;
+    }
+
+    public JTextField getTxtTotal() {
+        return txtTotal;
+    }
+
+    public void setTxtTotal(JTextField txtTotal) {
+        this.txtTotal = txtTotal;
     }
 
     /**
@@ -27,23 +124,134 @@ public class VentanaFacturas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        lbFecha = new javax.swing.JLabel();
+        lbSubtotal = new javax.swing.JLabel();
+        lbIVA = new javax.swing.JLabel();
+        lbTotal = new javax.swing.JLabel();
+        btnCrear = new javax.swing.JButton();
+        txtIVA = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
+        txtSubtotal = new javax.swing.JTextField();
+        txtFecha = new javax.swing.JTextField();
+
         setClosable(true);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lbFecha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbFecha.setText("Fecha:");
+
+        lbSubtotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbSubtotal.setText("Subtotal:");
+
+        lbIVA.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbIVA.setText("IVA:");
+
+        lbTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbTotal.setText("Total:");
+
+        btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbTotal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtTotal))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbIVA)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtIVA))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbSubtotal)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtSubtotal, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbFecha)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtFecha))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbFecha)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbSubtotal)
+                    .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbIVA)
+                    .addComponent(txtIVA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTotal)
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(btnCrear)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        // TODO add your handling code here:
+        if(txtFecha.getText().equalsIgnoreCase("") || txtIVA.getText().equalsIgnoreCase("") || txtSubtotal.getText().equalsIgnoreCase("") || txtTotal.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(this, mensajeError);
+        } else {
+            JOptionPane.showMessageDialog(rootPane, mensaje);
+        }
+    }//GEN-LAST:event_btnCrearActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCrear;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbFecha;
+    private javax.swing.JLabel lbIVA;
+    private javax.swing.JLabel lbSubtotal;
+    private javax.swing.JLabel lbTotal;
+    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtIVA;
+    private javax.swing.JTextField txtSubtotal;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
