@@ -19,7 +19,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     
     //Ventanas
-    private VentanaRegistrarUsuario ventanaRegistrar;
+    private VentanaRegistrarUsuario ventanaRegistrarUsuario;
     private VentanaIniciarSesion ventanaIniciarSecion;
     private VentanaBodegas ventanaBodegas;
     private VentanaRegistrarCliente ventanaRegistrarCliente;
@@ -33,7 +33,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
         
-        ventanaRegistrar = new VentanaRegistrarUsuario();
+        ventanaRegistrarUsuario = new VentanaRegistrarUsuario();
         ventanaIniciarSecion = new VentanaIniciarSesion();
         ventanaBodegas = new VentanaBodegas();
         ventanaRegistrarCliente = new VentanaRegistrarCliente();
@@ -230,9 +230,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void registrarMenuItermActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarMenuItermActionPerformed
         // TODO add your handling code here:
-        if(ventanaRegistrar.isVisible() == false){
-            desktopPane.add(ventanaRegistrar);
-            ventanaRegistrar.setVisible(true);
+        if(ventanaRegistrarUsuario.isVisible() == false){
+            desktopPane.add(ventanaRegistrarUsuario);
+            ventanaRegistrarUsuario.setVisible(true);
         }
     }//GEN-LAST:event_registrarMenuItermActionPerformed
 
@@ -244,26 +244,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         iniciarSesionMenuItem.setText(mensajes.getString("iniciar"));
         bodegasMenuItem.setText(mensajes.getString("bodegas"));
         productosMenuItem.setText(mensajes.getString("productos"));
-        clientesMenuItem.setText(mensajes.getString("clientes"));
+        clientesMenuItem.setText(mensajes.getString("cliente"));
         facturasMenuItem.setText(mensajes.getString("facturas"));
         salirMenuItem.setText(mensajes.getString("salir"));
         idiomasMenu.setText(mensajes.getString("idiomas"));
         espanolMenuItem.setText(mensajes.getString("espanol"));
         ingleslMenuItem.setText(mensajes.getString("ingles"));
         
-        //VentanaRegistrar
-        ventanaRegistrar.getLbCedula().setText(mensajes.getString("cedula"));
-        ventanaRegistrar.getLbNombre().setText(mensajes.getString("nombre"));
-        ventanaRegistrar.getLbApellido().setText(mensajes.getString("apellido"));
-        ventanaRegistrar.getLbTelefono().setText(mensajes.getString("telefono"));
-        ventanaRegistrar.getLbUsuario().setText(mensajes.getString("usuario"));
-        ventanaRegistrar.getLbContrasena().setText(mensajes.getString("contrasena"));
-        ventanaRegistrar.getBtnRegistrar().setText(mensajes.getString("registrar"));
+        //VentanaRegistrarUsuario
+        ventanaRegistrarUsuario.getLbCedula().setText(mensajes.getString("cedula"));
+        ventanaRegistrarUsuario.getLbNombre().setText(mensajes.getString("nombre"));
+        ventanaRegistrarUsuario.getLbApellido().setText(mensajes.getString("apellido"));
+        ventanaRegistrarUsuario.getLbTelefono().setText(mensajes.getString("telefono"));
+        ventanaRegistrarUsuario.getLbUsuario().setText(mensajes.getString("usuario"));
+        ventanaRegistrarUsuario.getLbContrasena().setText(mensajes.getString("contrasena"));
+        ventanaRegistrarUsuario.getBtnRegistrar().setText(mensajes.getString("registrar"));
+        ventanaRegistrarUsuario.setMensajeError(mensajes.getString("error"));
+        ventanaRegistrarUsuario.setMensaje(mensajes.getString("registro"));
         
         //VentanaIniciarSecion
         ventanaIniciarSecion.getLbUsuario().setText(mensajes.getString("usuario"));
         ventanaIniciarSecion.getLbContrasena().setText(mensajes.getString("contrasena"));
         ventanaIniciarSecion.getBtnRegistrar().setText(mensajes.getString("iniciar"));
+        ventanaIniciarSecion.setMensaje(mensajes.getString("mensaje"));
+        ventanaIniciarSecion.setMensajeError(mensajes.getString("error"));
         
         //VentanaRegistrarCliente
         ventanaRegistrarCliente.getLbCedula().setText(mensajes.getString("cedula"));
@@ -271,7 +275,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaRegistrarCliente.getLbApellido().setText(mensajes.getString("apellido"));
         ventanaRegistrarCliente.getLbTelefono().setText(mensajes.getString("telefono"));
         ventanaRegistrarCliente.getLbDireccion().setText(mensajes.getString("direccion"));
-        ventanaRegistrarCliente.getBtnRegistrar().setText(mensajes.getString("ingresar"));
+        ventanaRegistrarCliente.getBtnIngresar().setText(mensajes.getString("ingresar"));
+        ventanaRegistrarCliente.setMensaje(mensajes.getString("registrarC"));
+        ventanaRegistrarCliente.setMensajeError(mensajes.getString("error"));
     }
     /**
      * @param args the command line arguments
