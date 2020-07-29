@@ -7,6 +7,8 @@ package ec.edu.ups.ventanas;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,16 +19,12 @@ public class VentanaRegistrarCliente extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaClientes
      */
+    
+    String mensaje;
+    String mensajeError;
+    
     public VentanaRegistrarCliente() {
         initComponents();
-    }
-
-    public JButton getBtnRegistrar() {
-        return btnIngresar;
-    }
-
-    public void setBtnRegistrar(JButton btnRegistrar) {
-        this.btnIngresar = btnRegistrar;
     }
 
     public JLabel getLbCedula() {
@@ -77,6 +75,78 @@ public class VentanaRegistrarCliente extends javax.swing.JInternalFrame {
         this.lbApellido = lbApellido;
     }
 
+    public JButton getBtnIngresar() {
+        return btnIngresar;
+    }
+
+    public void setBtnIngresar(JButton btnIngresar) {
+        this.btnIngresar = btnIngresar;
+    }
+
+    public JTextField getTxtApellido() {
+        return txtApellido;
+    }
+
+    public void setTxtApellido(JTextField txtApellido) {
+        this.txtApellido = txtApellido;
+    }
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
+
+    public JTextField getTxtDireccion() {
+        return txtDireccion;
+    }
+
+    public void setTxtDireccion(JTextField txtDireccion) {
+        this.txtDireccion = txtDireccion;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtRuc() {
+        return txtRuc;
+    }
+
+    public void setTxtRuc(JTextField txtRuc) {
+        this.txtRuc = txtRuc;
+    }
+
+    public JTextField getTxtTelefono() {
+        return txtTelefono;
+    }
+
+    public void setTxtTelefono(JTextField txtTelefono) {
+        this.txtTelefono = txtTelefono;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,6 +195,11 @@ public class VentanaRegistrarCliente extends javax.swing.JInternalFrame {
 
         btnIngresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,6 +294,15 @@ public class VentanaRegistrarCliente extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        // TODO add your handling code here:
+        if(txtApellido.getText().equalsIgnoreCase("") || txtCedula.getText().equalsIgnoreCase("") || txtDireccion.getText().equalsIgnoreCase("") || txtNombre.getText().equalsIgnoreCase("") || txtRuc.getText().equalsIgnoreCase("") || txtTelefono.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(this, mensajeError);
+        } else {
+            JOptionPane.showMessageDialog(this, mensaje);
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
