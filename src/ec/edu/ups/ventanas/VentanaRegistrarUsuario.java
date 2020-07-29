@@ -21,8 +21,8 @@ public class VentanaRegistrarUsuario extends javax.swing.JInternalFrame {
      * Creates new form VentanaRegistrar
      */
     
-    String mensaje;
-    String mensajeError;
+    private String mensaje;
+    private String mensajeError;
     
     public VentanaRegistrarUsuario() {
         initComponents();
