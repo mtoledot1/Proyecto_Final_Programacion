@@ -7,6 +7,7 @@ package ec.edu.ups.ventanas;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -18,6 +19,10 @@ public class VentanaBodegas extends javax.swing.JInternalFrame {
     /**
      * Creates new form GestionBodegas
      */
+    
+    private String mensaje;
+    private String mensajeError;
+    
     public VentanaBodegas() {
         initComponents();
     }
@@ -49,6 +54,11 @@ public class VentanaBodegas extends javax.swing.JInternalFrame {
         lbNombre.setText("Nombre:");
 
         btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,6 +117,15 @@ public class VentanaBodegas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        // TODO add your handling code here:
+        if(txtCodigo.getText().equalsIgnoreCase("") || txtNombre.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(this, mensajeError);
+        } else {
+            JOptionPane.showMessageDialog(this, mensaje);
+        }
+    }//GEN-LAST:event_btnCrearActionPerformed
+
     public JButton getBtnCrear() {
         return btnCrear;
     }
@@ -145,6 +164,22 @@ public class VentanaBodegas extends javax.swing.JInternalFrame {
 
     public void setTxtNombre(JTextField txtNombre) {
         this.txtNombre = txtNombre;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
