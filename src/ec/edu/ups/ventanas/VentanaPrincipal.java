@@ -278,6 +278,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaRegistrarCliente.getBtnIngresar().setText(mensajes.getString("ingresar"));
         ventanaRegistrarCliente.setMensaje(mensajes.getString("registrarC"));
         ventanaRegistrarCliente.setMensajeError(mensajes.getString("error"));
+        
+        //VentanaProductos
+        ventanaProductos.getLbBodega().setText(mensajes.getString("bodega"));
+        ventanaProductos.getLbDescripcion().setText(mensajes.getString("descripcion"));
+        ventanaProductos.getLbNombre().setText("nombre");
+        ventanaProductos.getLbPrecio().setText(mensajes.getString("precio"));
+        ventanaProductos.getBtnAgregar().setText(mensajes.getString("crear"));
+        ventanaProductos.setMensajeError(mensajes.getString("error"));
+        ventanaProductos.setMensaje(mensajes.getString("registrarP"));
+        
+        //VentanaBodega
+        ventanaBodegas.getLbCodigo().setText(mensajes.getString("codigo"));
+        ventanaBodegas.getLbNombre().setText(mensajes.getString("nombre"));
+        ventanaBodegas.getBtnCrear().setText(mensajes.getString("crear"));
+        ventanaBodegas.setMensajeError(mensajes.getString("error"));
+        ventanaBodegas.setMensaje(mensajes.getString("registrarB"));
+        
+        //VentanaFacturas
+        ventanaFacturas.getLbFecha().setText(mensajes.getString("fecha"));
+        ventanaFacturas.getBtnCrear().setText(mensajes.getString("crear"));
+        ventanaFacturas.setMensaje(mensajes.getString("registrarF"));
+        ventanaFacturas.setMensajeError(mensajes.getString("error"));
     }
     /**
      * @param args the command line arguments
