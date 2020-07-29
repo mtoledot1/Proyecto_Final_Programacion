@@ -5,6 +5,11 @@
  */
 package ec.edu.ups.ventanas;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author GAMER PC
@@ -14,10 +19,135 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaProductos
      */
+    
+    private String mensaje;
+    private String mensajeError;
+    
     public VentanaProductos() {
         initComponents();
     }
 
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
+    }
+
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public void setBtnAgregar(JButton btnAgregar) {
+        this.btnAgregar = btnAgregar;
+    }
+
+    public JLabel getLbBodega() {
+        return lbBodega;
+    }
+
+    public void setLbBodega(JLabel lbBodega) {
+        this.lbBodega = lbBodega;
+    }
+
+    public JLabel getLbDescripcion() {
+        return lbDescripcion;
+    }
+
+    public void setLbDescripcion(JLabel lbDescripcion) {
+        this.lbDescripcion = lbDescripcion;
+    }
+
+    public JLabel getLbID() {
+        return lbID;
+    }
+
+    public void setLbID(JLabel lbID) {
+        this.lbID = lbID;
+    }
+
+    public JLabel getLbNombre() {
+        return lbNombre;
+    }
+
+    public void setLbNombre(JLabel lbNombre) {
+        this.lbNombre = lbNombre;
+    }
+
+    public JLabel getLbPrecio() {
+        return lbPrecio;
+    }
+
+    public void setLbPrecio(JLabel lbPrecio) {
+        this.lbPrecio = lbPrecio;
+    }
+
+    public JLabel getLbStock() {
+        return lbStock;
+    }
+
+    public void setLbStock(JLabel lbStock) {
+        this.lbStock = lbStock;
+    }
+
+    public JTextField getTxtBodega() {
+        return txtBodega;
+    }
+
+    public void setTxtBodega(JTextField txtBodega) {
+        this.txtBodega = txtBodega;
+    }
+
+    public JTextField getTxtDescripcion() {
+        return txtDescripcion;
+    }
+
+    public void setTxtDescripcion(JTextField txtDescripcion) {
+        this.txtDescripcion = txtDescripcion;
+    }
+
+    public JTextField getTxtID() {
+        return txtID;
+    }
+
+    public void setTxtID(JTextField txtID) {
+        this.txtID = txtID;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtPrecio() {
+        return txtPrecio;
+    }
+
+    public void setTxtPrecio(JTextField txtPrecio) {
+        this.txtPrecio = txtPrecio;
+    }
+
+    public JTextField getTxtStock() {
+        return txtStock;
+    }
+
+    public void setTxtStock(JTextField txtStock) {
+        this.txtStock = txtStock;
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,23 +157,164 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        lbID = new javax.swing.JLabel();
+        lbNombre = new javax.swing.JLabel();
+        lbDescripcion = new javax.swing.JLabel();
+        lbStock = new javax.swing.JLabel();
+        lbPrecio = new javax.swing.JLabel();
+        lbBodega = new javax.swing.JLabel();
+        btnAgregar = new javax.swing.JButton();
+        txtID = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtDescripcion = new javax.swing.JTextField();
+        txtStock = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
+        txtBodega = new javax.swing.JTextField();
+
         setClosable(true);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lbID.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbID.setText("ID:");
+
+        lbNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbNombre.setText("Nombre:");
+
+        lbDescripcion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbDescripcion.setText("Descripcion:");
+
+        lbStock.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbStock.setText("Stock:");
+
+        lbPrecio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbPrecio.setText("Precio:");
+
+        lbBodega.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbBodega.setText("Bodega:");
+
+        btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbBodega)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBodega))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbPrecio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPrecio))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbStock)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtStock))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbDescripcion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDescripcion))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbNombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombre))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbID)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbID)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNombre)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbDescripcion)
+                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbStock)
+                    .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbPrecio)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbBodega)
+                    .addComponent(txtBodega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        if(txtBodega.getText().equalsIgnoreCase("") || txtDescripcion.getText().equalsIgnoreCase("") || txtID.getText().equalsIgnoreCase("") || txtID.getText().equalsIgnoreCase("") || txtNombre.getText().equalsIgnoreCase("") || txtPrecio.getText().equalsIgnoreCase("") || txtStock.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(this, mensajeError);
+        } else {
+            JOptionPane.showMessageDialog(this, mensaje);
+        }
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbBodega;
+    private javax.swing.JLabel lbDescripcion;
+    private javax.swing.JLabel lbID;
+    private javax.swing.JLabel lbNombre;
+    private javax.swing.JLabel lbPrecio;
+    private javax.swing.JLabel lbStock;
+    private javax.swing.JTextField txtBodega;
+    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 }
