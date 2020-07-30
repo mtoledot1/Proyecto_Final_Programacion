@@ -17,15 +17,19 @@ import java.util.List;
 public class ControladorFactura {
 
     //lista de facturas
-    private Factura[] facturas;
+    private ArrayList<Factura> facturas;
     private Factura factura;
     //private FacturaDao facturaDAO;
     private ArrayList<Producto> productos;
 
-    public ControladorFactura(Factura[] facturas/*, */) {
+    public ControladorFactura(ArrayList<Factura> facturas, ArrayList<Producto> productos) {
         this.facturas = facturas;
-
+        this.productos = productos;
     }
+
+    
+    
+    
 
     //para crear la factura pasa como parámetros sus atributos.
     public Factura crearFactura(Cliente cliente, Date fecha, Producto[] productos, double subtotal, double IVA, boolean estado) {
@@ -37,12 +41,24 @@ public class ControladorFactura {
 
     public void anularFactura(int codigo) {
 
-        // if(factura.getCodigo==codigo){
+        
+             //obitiene el id de la factura
+            // if(factura.getId==codigo){
+                 
+            // }
+             
+             
+         
+        
+        
         
     }
 
-    public void validarFactura() {
-                
+    public boolean validarFactura(int id) {
+        
+            //    facturaDAO.read(id);
+        
+        return true;
     }
 
     public double calcularIVA(double precio, int stock) {
@@ -61,11 +77,14 @@ public class ControladorFactura {
         return subtotal;
     }
 
-    public double calcularTotal(double precio) {
+    public double calcularTotal(double precio,int stock) {
+        
+        double total;
+        
+        total=(precio*stock)+(precio*0.12);
         
         
-        
-        return 0.00;
+        return total;
     }
 
     public Factura buscarFacturas(int id) {
