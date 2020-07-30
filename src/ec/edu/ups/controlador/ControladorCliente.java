@@ -17,6 +17,7 @@ public class ControladorCliente {
 //    private ClienteDao clienteDAO;
 
     public ControladorCliente() {
+        //DAO
     }
     
     public Cliente registar(String cedula, String ruc, String nombre, String apellido, String telefono, String direccion){

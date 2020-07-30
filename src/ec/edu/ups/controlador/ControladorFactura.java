@@ -5,10 +5,27 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.modelo.Factura;
+
 /**
  *
  * @author braya
  */
 public class ControladorFactura {
+    private Factura factura;
+    //private FacturaDAO facturaDAO;
+
+    public ControladorFactura() {
+        //DAO
+    }
     
+    public Factura crearFactura(){
+        factura = new Factura();
+        //facturaDAO.create(factura);
+        return factura;
+    }
+    
+    public void disminuirStock(){
+        
+    }
 }
