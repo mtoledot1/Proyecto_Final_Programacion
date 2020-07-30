@@ -13,6 +13,8 @@ import ec.edu.ups.modelo.Factura;
  */
 public class ControladorFactura {
     private Factura factura;
+//    private Array
+    
     //private FacturaDAO facturaDAO;
     
     public ControladorFactura() {
@@ -28,4 +30,6 @@ public class ControladorFactura {
     public void disminuirStock(){
         
     }
+    
+    //mijin has tu anulacion de facturas medio pereza
 }

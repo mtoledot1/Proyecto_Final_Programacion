@@ -5,10 +5,32 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.modelo.Producto;
+
 /**
  *
  * @author braya
  */
 public class ControladorBodega {
+    private Producto producto;
+
+    public ControladorBodega() {
+    }
     
+    //MÉTODOS
+    
+    /**
+     * @param producto parametro tipo Producto.....
+     */
+    
+    //Método para almacenar el producto en bodega
+    public void almacenar(Producto producto){
+        
+    }
+    
+    //Método para retirar el producto en bodega
+    public void retirar(Producto producto){
+        
+        
+    }
 }

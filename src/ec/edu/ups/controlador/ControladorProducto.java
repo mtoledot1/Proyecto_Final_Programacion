@@ -6,31 +6,48 @@
 package ec.edu.ups.controlador;
 
 import ec.edu.ups.modelo.Producto;
+import java.util.ArrayList;
 
 /**
  *
  * @author braya
  */
 public class ControladorProducto {
-    
-    public void añadirProducto(Producto producto){
-        
-        //Dao
+    private Producto producto;
+    private ArrayList<Producto> productos;
+    //private ProductoDAO productoDAO;
+
+    public ControladorProducto() {
+        productos = new ArrayList<>();
     }
     
-    public void quitarProducto(Producto producto){
-        //Dao
+    public Producto añadirProducto(int id, String nombre, String descripcion, int stock, double precio, int bodega){
+        producto = new Producto(id, nombre, descripcion, stock, precio, bodega);
+        //productoDAO.create(producto);
+        return producto;
     }
     
-    public void anularProducto(){
-        
+    public List<Producto> productos(){
+        return productoDAO.findAll();
+    }
+    
+    public void quitarProducto(int id){
+        //productoDAO.delete(id);
     }
     
     public void almacenar(Producto producto){
-        
+        productos.add(producto);
     }
     
-    public Producto retirar(Producto producto){
+    public Producto retirar(int id){
+        for (Producto productoB : productos) {
+            if (productoB.getId() == id) {
+                productos.remove(productoB);
+                break;
+            }
+        }
         return null;        
     }
+    
+    
 }
