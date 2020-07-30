@@ -282,24 +282,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //VentanaProductos
         ventanaProductos.getLbBodega().setText(mensajes.getString("bodega"));
         ventanaProductos.getLbDescripcion().setText(mensajes.getString("descripcion"));
-        ventanaProductos.getLbNombre().setText("nombre");
+        ventanaProductos.getLbNombre().setText(mensajes.getString("nombre"));
         ventanaProductos.getLbPrecio().setText(mensajes.getString("precio"));
-        ventanaProductos.getBtnAgregar().setText(mensajes.getString("crear"));
+        ventanaProductos.getBtnAgregar().setText(mensajes.getString("guardar"));
         ventanaProductos.setMensajeError(mensajes.getString("error"));
         ventanaProductos.setMensaje(mensajes.getString("registrarP"));
         
         //VentanaBodega
         ventanaBodegas.getLbCodigo().setText(mensajes.getString("codigo"));
         ventanaBodegas.getLbNombre().setText(mensajes.getString("nombre"));
-        ventanaBodegas.getBtnCrear().setText(mensajes.getString("crear"));
+        ventanaBodegas.getBtnCrear().setText(mensajes.getString("guardar"));
         ventanaBodegas.setMensajeError(mensajes.getString("error"));
         ventanaBodegas.setMensaje(mensajes.getString("registrarB"));
         
         //VentanaFacturas
         ventanaFacturas.getLbFecha().setText(mensajes.getString("fecha"));
-        ventanaFacturas.getBtnCrear().setText(mensajes.getString("crear"));
+        ventanaFacturas.getBtnGuardar().setText(mensajes.getString("guardar"));
         ventanaFacturas.setMensaje(mensajes.getString("registrarF"));
         ventanaFacturas.setMensajeError(mensajes.getString("error"));
+        ventanaFacturas.getLbCliente().setText(mensajes.getString("client"));
+        ventanaFacturas.getLbDatos().setText(mensajes.getString("datos"));
+        ventanaFacturas.getLbTitulo().setText(mensajes.getString("titulo"));
+        ventanaFacturas.getBtnCancelar().setText(mensajes.getString("cancelar"));
+        ventanaFacturas.getLbEstado().setText(mensajes.getString("estado"));
+        ventanaFacturas.getChbxEstado().setText(mensajes.getString("act"));
     }
     /**
      * @param args the command line arguments

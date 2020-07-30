@@ -14,7 +14,7 @@ import ec.edu.ups.modelo.Factura;
 public class ControladorFactura {
     private Factura factura;
     //private FacturaDAO facturaDAO;
-
+    
     public ControladorFactura() {
         //DAO
     }
