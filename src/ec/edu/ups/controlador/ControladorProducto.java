@@ -5,10 +5,32 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.modelo.Producto;
+
 /**
  *
  * @author braya
  */
 public class ControladorProducto {
     
+    public void añadirProducto(Producto producto){
+        
+        //Dao
+    }
+    
+    public void quitarProducto(Producto producto){
+        //Dao
+    }
+    
+    public void anularProducto(){
+        
+    }
+    
+    public void almacenar(Producto producto){
+        
+    }
+    
+    public Producto retirar(Producto producto){
+        return null;        
+    }
 }

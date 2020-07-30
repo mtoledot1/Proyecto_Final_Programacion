@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.modelo.Cliente;
 import ec.edu.ups.modelo.Producto;
 
 /**
@@ -12,31 +13,29 @@ import ec.edu.ups.modelo.Producto;
  * @author braya
  */
 public class ControladorCliente {
-    public double calcularSubtotal(){
-        return 0;
+    private Cliente cliente;
+//    private ClienteDao clienteDAO;
+
+    public ControladorCliente() {
     }
     
-    public double calcularTotal(){
-        return  0;
+    public Cliente registar(String cedula, String ruc, String nombre, String apellido, String telefono, String direccion){
+        cliente = new Cliente();
+        //clienteDAO.create(cliente);
+        return cliente;
     }
     
-    public void añadirProducto(Producto producto){
-        //
+    public void actualizar(String cedula, String ruc, String nombre, String apellido, String telefono, String direccion){
+        cliente = new Cliente();
+        //clienteDAO.update(cliente);
     }
     
-    public void quitarProducto(Producto producto){
-        
+    public void eliminar(String cedula){
+        //clienteDAO.delete(cedula);
     }
     
-    public void anularProducto(){
-        
-    }
-    
-    public void almacenar(Producto producto){
-        
-    }
-    
-    public Producto retirar(Producto producto){
-        return null;        
+    public Cliente buscarCliente(String cedula){
+        //clienteDAO.read(cedula);
+        return cliente;
     }
 }
