@@ -118,4 +118,16 @@ public class ControladorFactura {
        return null;
     }
 
+     public List<Factura> listarFacturaDeCliente(String ruc) {
+         
+         
+         //llama al DAOimpl del cliente para obtener las facturas: public List<Facturas> facturasCliente(String ruc);
+         // return facturasDAO.facturasCliente(ruc);
+         
+         
+       return null;
+     }
+     
+     
+     
 }
