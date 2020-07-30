@@ -7,6 +7,7 @@ package ec.edu.ups.controlador;
 
 import ec.edu.ups.modelo.Producto;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -28,7 +29,8 @@ public class ControladorProducto {
     }
     
     public List<Producto> productos(){
-        return productoDAO.findAll();
+        //return productoDAO.findAll();
+	return null;
     }
     
     public void quitarProducto(int id){
