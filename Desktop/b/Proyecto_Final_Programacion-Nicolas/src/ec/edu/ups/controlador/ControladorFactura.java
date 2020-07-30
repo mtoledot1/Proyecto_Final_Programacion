@@ -40,11 +40,11 @@ public class ControladorFactura {
     }
 
     public void anularFactura(int codigo) {
-
+            boolean estado;
         
              //obitiene el id de la factura
             // if(factura.getId==codigo){
-                 
+                 estado=false;
             // }
              
              
@@ -55,10 +55,10 @@ public class ControladorFactura {
     }
 
     public boolean validarFactura(int id) {
-        
+        boolean estado;
             //    facturaDAO.read(id);
-        
-        return true;
+                estado=true;
+        return estado;
     }
 
     public double calcularIVA(double precio, int stock) {
