@@ -8,6 +8,7 @@ package ec.edu.ups.controlador;
 import ec.edu.ups.modelo.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -37,10 +38,11 @@ public class ControladorFactura {
     public void anularFactura(int codigo) {
 
         // if(factura.getCodigo==codigo){
+        
     }
 
     public void validarFactura() {
-
+                
     }
 
     public double calcularIVA(double precio, int stock) {
@@ -60,7 +62,9 @@ public class ControladorFactura {
     }
 
     public double calcularTotal(double precio) {
-
+        
+        
+        
         return 0.00;
     }
 
@@ -77,8 +81,22 @@ public class ControladorFactura {
 
     }
 
-    public void listarFacturas() {
-
+    public int codigoFactura() {
+        
+        // facturaDao llama a idFactura que está en el IDAOFactura como : public int idFactura;)
+        
+      //  int cont = facturaDAO.idFactura();
+       // return (++cont);
+       
+       return 0;
+    }
+    
+    
+     public List<Factura> listarFacturas() {
+         
+         //llama al DAOimpl de factura
+       // return facturaDAO.findAll();
+       return null;
     }
 
 }
