@@ -3,11 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/tano/NetBeansProjects/Facturacion/src/ec/edu/ups/modelo/Cliente.java</file>
-            <file>file:/home/tano/NetBeansProjects/Facturacion/src/ec/edu/ups/modelo/Factura.java</file>
-            <file>file:/home/tano/NetBeansProjects/Facturacion/src/ec/edu/ups/modelo/Usuario.java</file>
-            <file>file:/home/tano/NetBeansProjects/Facturacion/src/ec/edu/ups/modelo/Producto.java</file>
-            <file>file:/home/tano/NetBeansProjects/Facturacion/src/ec/edu/ups/modelo/Bodega.java</file>
+            <file>file:/home/tano/NetBeansProjects/Facturacion/src/ec/edu/ups/dao/ClienteDAO.java</file>
+            <file>file:/home/tano/NetBeansProjects/Facturacion/src/ec/edu/ups/dao/PersonaDAO.java</file>
+            <file>file:/home/tano/NetBeansProjects/Facturacion/src/ec/edu/ups/dao/ProductoDAO.java</file>
+            <file>file:/home/tano/NetBeansProjects/Facturacion/src/ec/edu/ups/dao/BodegaDAO.java</file>
+            <file>file:/home/tano/NetBeansProjects/Facturacion/src/ec/edu/ups/dao/FacturaDAO.java</file>
         </group>
     </open-files>
 </project-private>
