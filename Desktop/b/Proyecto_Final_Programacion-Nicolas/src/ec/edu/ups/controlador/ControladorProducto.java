@@ -33,4 +33,7 @@ public class ControladorProducto {
     public Producto retirar(Producto producto){
         return null;        
     }
+    
+    
+    
 }

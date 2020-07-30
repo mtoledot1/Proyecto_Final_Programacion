@@ -28,6 +28,7 @@ public class ControladorBodega {
     //Método para retirar el producto en bodega
     public void retirar(Producto producto){
         
+        
     }
     
     
