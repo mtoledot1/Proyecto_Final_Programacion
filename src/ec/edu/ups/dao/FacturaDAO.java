@@ -134,9 +134,7 @@ public class FacturaDAO {
 		}
 		facturas.add(fac);
             }
-	    file.setLength(0);
-	    for(Factura f : facturas)
-		create(f);
+	    return facturas;
         } catch (IOException ex) {
             System.out.println("Error de escritura y lectura");
             ex.printStackTrace();
