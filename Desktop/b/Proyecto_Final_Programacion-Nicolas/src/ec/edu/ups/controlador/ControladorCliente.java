@@ -17,6 +17,7 @@ public class ControladorCliente {
 //    private ClienteDao clienteDAO;
 
     public ControladorCliente() {
+        
     }
     
     ///
