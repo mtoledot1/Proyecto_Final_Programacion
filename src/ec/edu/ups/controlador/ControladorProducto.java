@@ -5,8 +5,11 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.dao.ProductoDAO;
+import ec.edu.ups.modelo.Bodega;
 import ec.edu.ups.modelo.Producto;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,15 +18,15 @@ import java.util.ArrayList;
 public class ControladorProducto {
     private Producto producto;
     private ArrayList<Producto> productos;
-    //private ProductoDAO productoDAO;
+    private ProductoDAO productoDAO;
 
     public ControladorProducto() {
         productos = new ArrayList<>();
     }
     
-    public Producto añadirProducto(int id, String nombre, String descripcion, int stock, double precio, int bodega){
+    public Producto añadirProducto(int id, String nombre, String descripcion, int stock, double precio, Bodega bodega){
         producto = new Producto(id, nombre, descripcion, stock, precio, bodega);
-        //productoDAO.create(producto);
+        productoDAO.create(producto);
         return producto;
     }
     
@@ -32,7 +35,7 @@ public class ControladorProducto {
     }
     
     public void quitarProducto(int id){
-        //productoDAO.delete(id);
+        productoDAO.delete(id);
     }
     
     public void almacenar(Producto producto){

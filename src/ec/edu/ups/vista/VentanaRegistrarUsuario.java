@@ -3,21 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.ups.ventanas;
+package ec.edu.ups.vista;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
  * @author GAMER PC
  */
-public class VentanaRegistrar extends javax.swing.JInternalFrame {
+public class VentanaRegistrarUsuario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form VentanaRegistrar
      */
-    public VentanaRegistrar() {
+    
+    private String mensaje;
+    private String mensajeError;
+    
+    public VentanaRegistrarUsuario() {
         initComponents();
     }
 
@@ -45,6 +52,8 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
         txtApellido = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
 
+        setClosable(true);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lbCedula.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -67,6 +76,11 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
 
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,6 +175,15 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // TODO add your handling code here:
+        if(txtApellido.getText().equalsIgnoreCase("") || txtCedula.getText().equalsIgnoreCase("") || txtContrasena.getText().equalsIgnoreCase("") || txtNombre.getText().equalsIgnoreCase("") || txtTelefono.getText().equalsIgnoreCase("") || txtUsuario.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(this, mensajeError);
+        } else {
+            JOptionPane.showMessageDialog(this, mensaje);
+        }
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
     public JButton getBtnRegistrar() {
         return btnRegistrar;
     }
@@ -216,6 +239,71 @@ public class VentanaRegistrar extends javax.swing.JInternalFrame {
     public void setLbUsuario(JLabel lbUsuario) {
         this.lbUsuario = lbUsuario;
     }
+
+    public JTextField getTxtApellido() {
+        return txtApellido;
+    }
+
+    public void setTxtApellido(JTextField txtApellido) {
+        this.txtApellido = txtApellido;
+    }
+
+    public JTextField getTxtCedula() {
+        return txtCedula;
+    }
+
+    public void setTxtCedula(JTextField txtCedula) {
+        this.txtCedula = txtCedula;
+    }
+
+    public JPasswordField getTxtContrasena() {
+        return txtContrasena;
+    }
+
+    public void setTxtContrasena(JPasswordField txtContrasena) {
+        this.txtContrasena = txtContrasena;
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtTelefono() {
+        return txtTelefono;
+    }
+
+    public void setTxtTelefono(JTextField txtTelefono) {
+        this.txtTelefono = txtTelefono;
+    }
+
+    public JTextField getTxtUsuario() {
+        return txtUsuario;
+    }
+
+    public void setTxtUsuario(JTextField txtUsuario) {
+        this.txtUsuario = txtUsuario;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+
+    public String getMensajeError() {
+        return mensajeError;
+    }
+
+    public void setMensajeError(String mensajeError) {
+        this.mensajeError = mensajeError;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
