@@ -1,41 +1,33 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package ec.edu.ups.controlador;
 
-import ec.edu.ups.modelo.Usuario;
+import ec.edu.ups.modelo.Cliente;
+import ec.edu.ups.modelo.Producto;
 
 /**
  *
  * @author braya
  */
-public class ControladorUsuario {
-     private Usuario usuario;
-     private Usuario sesion;
-//    private UsuarioDao usuarioDAO;
+public class ControladorCliente {
+    private Cliente cliente;
+//    private ClienteDao clienteDAO;
 
-    public ControladorUsuario() {
+    public ControladorCliente() {
     }
     
-    /*public boolean iniciarSesion(String correo, String contrasenia){
-        usuario = usuarioDAO.login(correo, contrasenia);
-	if(usuario != null){
-	    sesion = usuario;
-	    return true;
-	}else
-	    return false;
-    }*/
-    
-    public Usuario crearUsuario(String cedula, String nombre, String apellido, String telefono, String correo, String contraseña){
-        usuario = new Usuario(cedula, nombre, apellido, telefono, correo, contraseña);
-        //usuarioDAO.create(usuario);
-        return usuario;
+    ///
+    public Cliente registar(String cedula, String ruc, String nombre, String apellido, String telefono, String direccion){
+        cliente = new Cliente();
+        //clienteDAO.create(cliente);
+        return cliente;
     }
     
-    public void actualizar(String cedula, String nombre, String apellido, String telefono, String correo, String contraseña){
-        usuario = new Usuario(cedula, nombre, apellido, telefono, correo, contraseña);
+    public void actualizar(String cedula, String ruc, String nombre, String apellido, String telefono, String direccion){
+        cliente = new Cliente();
         //clienteDAO.update(cliente);
     }
     
@@ -43,9 +35,9 @@ public class ControladorUsuario {
         //clienteDAO.delete(cedula);
     }
     
-    public Usuario buscarCliente(String cedula){
+    public Cliente buscarCliente(String cedula){
         //clienteDAO.read(cedula);
-        return usuario;
+        return cliente;
     }
     
     //aplicación de excepciones 
@@ -85,6 +77,7 @@ public class ControladorUsuario {
         }
     }
     
+
     class ExcepcionTamaño extends Exception {
 
         public ExcepcionTamaño() {
@@ -97,4 +90,8 @@ public class ControladorUsuario {
             super("Cedula incorrecta");
         }
     }
+    
+    
+    
+    
 }
