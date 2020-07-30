@@ -20,7 +20,7 @@ public class ControladorCliente {
         
     }
     
-    ///
+   
     public Cliente registar(String cedula, String ruc, String nombre, String apellido, String telefono, String direccion){
         cliente = new Cliente();
         //clienteDAO.create(cliente);

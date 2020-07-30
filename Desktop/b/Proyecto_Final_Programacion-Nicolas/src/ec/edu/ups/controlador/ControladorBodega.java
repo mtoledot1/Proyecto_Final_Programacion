@@ -8,6 +8,7 @@ package ec.edu.ups.controlador;
 import ec.edu.ups.modelo.Bodega;
 import ec.edu.ups.modelo.Producto;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,8 +17,8 @@ import java.util.ArrayList;
 public class ControladorBodega {
     private Producto producto;
     private ArrayList<Producto> productos;
-  //  private Bodega bodega;
-   
+    private Bodega bodega;
+    
     //MÉTODOS
     
     
@@ -32,6 +33,14 @@ public class ControladorBodega {
         
     }
 
+    public Bodega crearBodega(int codigo,String nombre){
+          bodega=new Bodega();
+          //llama a bodegaImpl para crear una bodega
+       // bodegaDAO.create(bodega);
+        
+        return bodega;
+    }
+    
     public Producto añadirProducto(int id, String nombre, String descripcion, int stock, double precio, int bodega) {
         producto=new Producto();
        //se llama al DaoImpl
@@ -52,7 +61,6 @@ public class ControladorBodega {
        //se agrega al array los productos
         productos.add(producto);
         
-        
     }
     
     //Método para retirar el producto en bodega
@@ -60,6 +68,8 @@ public class ControladorBodega {
         
         
             for(Producto pro: productos){
+                
+                //"pro.getId": obtener el id del MODELO del PRODUCTO
                 
                 /*if(pro.getId==id){
                     productos.remove(pro);
@@ -74,8 +84,27 @@ public class ControladorBodega {
         return null;
     }
     
+    public int codigoBodega() {
+        
+        //el bodegaDao llama a idbodega que está en el IDAOBodega como : public int idBodega;)
+        
+      //  int cont = bodegaDAO.idBodega();
+       // return (++cont);
+       
+       return 0;
+    }
     
     
+     public List<Producto> listarProductos(int id) {
+            
+         
+        for(int i=0; i<productos.size();i++){
+            productos.get(i);
+        }
+        
+        return productos;
+        
+     }
     
     
     
