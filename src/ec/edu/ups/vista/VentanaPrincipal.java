@@ -123,8 +123,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         facturasMenuItem = new javax.swing.JMenuItem();
         salirMenuItem = new javax.swing.JMenuItem();
         consultasMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        inventarioMenuItem = new javax.swing.JMenuItem();
+        invBodegaMenuItem = new javax.swing.JMenuItem();
         idiomasMenu = new javax.swing.JMenu();
         espanolMenuItem = new javax.swing.JMenuItem();
         ingleslMenuItem = new javax.swing.JMenuItem();
@@ -198,21 +198,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         consultasMenu.setText("Consulta");
 
-        jMenuItem1.setText("Inventario");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        inventarioMenuItem.setText("Inventario");
+        inventarioMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                inventarioMenuItemActionPerformed(evt);
             }
         });
-        consultasMenu.add(jMenuItem1);
+        consultasMenu.add(inventarioMenuItem);
 
-        jMenuItem2.setText("Inventario por Bodegas");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        invBodegaMenuItem.setText("Inventario por Bodegas");
+        invBodegaMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                invBodegaMenuItemActionPerformed(evt);
             }
         });
-        consultasMenu.add(jMenuItem2);
+        consultasMenu.add(invBodegaMenuItem);
 
         menuBar.add(consultasMenu);
 
@@ -321,19 +321,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_registrarMenuItermActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void inventarioMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventarioMenuItemActionPerformed
 	if(ventanaInventario.isVisible() == false){
             desktopPane.add(ventanaInventario);
             ventanaInventario.setVisible(true);
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_inventarioMenuItemActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void invBodegaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invBodegaMenuItemActionPerformed
         if(ventanaInventarioBodega.isVisible() == false){
             desktopPane.add(ventanaInventarioBodega);
             ventanaInventarioBodega.setVisible(true);
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_invBodegaMenuItemActionPerformed
 
     public void cambiarIdioma(){
         
@@ -349,6 +349,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         idiomasMenu.setText(mensajes.getString("idiomas"));
         espanolMenuItem.setText(mensajes.getString("espanol"));
         ingleslMenuItem.setText(mensajes.getString("ingles"));
+	consultasMenu.setText(mensajes.getString("consulta"));
+	inventarioMenuItem.setText(mensajes.getString("inventario"));
+	invBodegaMenuItem.setText(mensajes.getString("InventarioBodega"));
         
         //VentanaRegistrarUsuario
         ventanaRegistrarUsuario.getLbCedula().setText(mensajes.getString("cedula"));
@@ -459,8 +462,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem ingleslMenuItem;
     private javax.swing.JMenuItem iniciarSesionMenuItem;
     private javax.swing.JMenu inicioMenu;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem invBodegaMenuItem;
+    private javax.swing.JMenuItem inventarioMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem productosMenuItem;
     private javax.swing.JMenuItem registrarMenuIterm;
