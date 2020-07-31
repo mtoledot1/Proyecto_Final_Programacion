@@ -17,7 +17,7 @@ public class ClienteDAO {
     public ClienteDAO(PersonaDAO personaDAO){
 	this.personaDAO = personaDAO;
 	try{
-	    file = new RandomAccessFile("datos/clientes.dar", "rw");
+	    file = new RandomAccessFile("datos/clientes.dat", "rw");
 	}catch(FileNotFoundException e){
 	    System.out.println("Archivo no econtrado: ");
 	    e.printStackTrace();
@@ -32,6 +32,7 @@ public class ClienteDAO {
 	    file.writeUTF(cliente.getDireccion());
 	    file.writeUTF(cliente.getTelefono());
 	    file.writeUTF(cliente.getPropietario().getCedula());
+	    System.out.println(file.length());
 	} catch (IOException e) {
 	    System.out.println("Error de lectura y escritura: ");
 	    e.printStackTrace();
@@ -46,7 +47,7 @@ public class ClienteDAO {
 		file.seek(pos);
                 String rucA = file.readUTF().trim();
                 if(ruc.equals(rucA)){
-		    Cliente cliente = new Cliente(ruc, file.readUTF(), file.readUTF(), file.readUTF(), file.readUTF(), null);
+		    Cliente cliente = new Cliente(ruc, file.readUTF(), file.readUTF(), file.readUTF(), null);
 		    Persona persona = personaDAO.read(file.readUTF());
 		    cliente.setPropietario(persona);
                     return cliente;
@@ -68,7 +69,7 @@ public class ClienteDAO {
 	    file.seek(pos);
             while (pos < file.length()) {                
                 String rucA = file.readUTF().trim();
-		Cliente cli = new Cliente(rucA, file.readUTF(), file.readUTF(), file.readUTF(), file.readUTF(), null);
+		Cliente cli = new Cliente(rucA, file.readUTF(), file.readUTF(), file.readUTF(), null);
 		Persona persona = personaDAO.read(file.readUTF());
 		cli.setPropietario(persona);
                 if(ruc.equals(rucA)){
@@ -95,7 +96,7 @@ public class ClienteDAO {
 		file.seek(pos);
                 String rucA = file.readUTF().trim();
                 if(!ruc.equals(rucA)){
-                    Cliente cliente = new Cliente(rucA, file.readUTF(), file.readUTF(), file.readUTF(), file.readUTF(), null);
+                    Cliente cliente = new Cliente(rucA, file.readUTF(), file.readUTF(), file.readUTF(), null);
 		    Persona persona = personaDAO.read(file.readUTF());
 		    cliente.setPropietario(persona);
 		    clientes.add(cliente);
@@ -119,7 +120,7 @@ public class ClienteDAO {
 	    file.seek(pos);
             while (pos < file.length()) {
 		String ruc = file.readUTF().trim();
-		Cliente cliente = new Cliente(ruc, file.readUTF(), file.readUTF(), file.readUTF(), file.readUTF(), null);
+		Cliente cliente = new Cliente(ruc, file.readUTF(), file.readUTF(), file.readUTF(), null);
 		Persona persona = personaDAO.read(file.readUTF());
 		cliente.setPropietario(persona);
                 pos += tam;

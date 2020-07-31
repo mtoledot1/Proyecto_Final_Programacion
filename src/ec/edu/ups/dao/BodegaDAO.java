@@ -10,11 +10,11 @@ import java.util.List;
 public class BodegaDAO {
     
     private RandomAccessFile file;
-    private int tam = 33;
+    private int tam = 45;
     
     public BodegaDAO(){
 	try{
-	    file = new RandomAccessFile("datos/bodegas.dar", "rw");
+	    file = new RandomAccessFile("datos/bodegas.dat", "rw");
 	}catch(FileNotFoundException e){
 	    System.out.println("Archivo no econtrado: ");
 	    e.printStackTrace();
@@ -26,6 +26,8 @@ public class BodegaDAO {
 	    file.seek(file.length());
 	    file.writeInt(bodega.getCodigo());
 	    file.writeUTF(bodega.getNombre());
+	    file.writeInt(bodega.getTamanio());
+	    file.writeInt(bodega.getProductos());
 	}catch(IOException e){
 	    System.out.println("Error de lectura y escritura: ");
 	    e.printStackTrace();
@@ -39,7 +41,7 @@ public class BodegaDAO {
 		file.seek(salto);
 		int codigoArchivo = file.readInt();
 		if(codigo == codigoArchivo){
-		    Bodega bodega = new Bodega(codigo, file.readUTF());
+		    Bodega bodega = new Bodega(codigo, file.readUTF(), file.readInt(), file.readInt());
 		    return bodega;
 		}
 		salto += tam;
@@ -57,13 +59,13 @@ public class BodegaDAO {
         try {
             int pos = 0;
 	    file.seek(pos);
-            while (pos < file.length()) {                
+            while (pos < file.length()) {
                 int cod = file.readInt();
 		Bodega b;
 		if(cod == codigo)
                     b = bodega;
 		else{
-		    b = new Bodega(cod, file.readUTF());
+		    b = new Bodega(codigo, file.readUTF(), file.readInt(), file.readInt());
 		}
 		bodegas.add(b);
                 pos += tam;
@@ -81,11 +83,11 @@ public class BodegaDAO {
 	ArrayList<Bodega> bodegas = new ArrayList<>();
         try {
             int pos = 0;
-	    file.seek(pos);
-            while (pos < file.length()) {                
+            while (pos < file.length()) {
+		file.seek(pos);
                 int cod = file.readInt();
 		if(codigo != cod){
-                    Bodega bodega = new Bodega(cod, file.readUTF());
+                    Bodega bodega = new Bodega(codigo, file.readUTF(), file.readInt(), file.readInt());
                     bodegas.add(bodega);
                 }
                 pos += tam;
@@ -104,10 +106,8 @@ public class BodegaDAO {
         try {
             int pos = 0;
 	    file.seek(pos);
-            while (pos < file.length()) {                
-                int cod = file.readInt();
-		String nombre = file.readUTF();
-		Bodega bodega = new Bodega(cod, nombre);
+            while (pos < file.length()) {
+		Bodega bodega = new Bodega(file.readInt(), file.readUTF(), file.readInt(), file.readInt());
 		bodegas.add(bodega);
                 pos += tam;
             }

@@ -12,7 +12,7 @@ public class ProductoDAO {
     
     private BodegaDAO bodegaDAO;
     private RandomAccessFile file;
-    private int tam = 107;
+    private int tam = 99;
     
     public ProductoDAO(BodegaDAO bodegaDAO){
 	this.bodegaDAO = bodegaDAO;
@@ -92,8 +92,8 @@ public class ProductoDAO {
 	ArrayList<Producto> productos = new ArrayList<>();
         try {
             int pos = 0;
-	    file.seek(pos);
-            while (pos < file.length()) {                
+            while (pos < file.length()-1) {
+		file.seek(pos);
                 int idA = file.readInt();
 		if(id != idA){
 		    Producto producto = new Producto(idA, file.readUTF(), file.readUTF(), file.readInt(), file.readDouble(), null);

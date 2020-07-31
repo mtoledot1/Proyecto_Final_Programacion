@@ -17,7 +17,7 @@ public class UsuarioDAO {
     public UsuarioDAO(PersonaDAO personaDAO){
 	this.personaDAO = personaDAO;
 	try{
-	    file = new RandomAccessFile("datos/usuarios.dar", "rw");
+	    file = new RandomAccessFile("datos/usuarios.dat", "rw");
 	}catch(FileNotFoundException e){
 	    System.out.println("Archivo no econtrado: ");
 	    e.printStackTrace();
@@ -26,7 +26,6 @@ public class UsuarioDAO {
     
     public void create(Usuario usuario){
 	try{
-	    personaDAO.create(usuario);
 	    file.seek(file.length());
 	    file.writeUTF(usuario.getCedula());
 	    file.writeUTF(usuario.getUsuario());
@@ -46,7 +45,7 @@ public class UsuarioDAO {
                 String cedulaA = file.readUTF().trim();
                 if(cedula.equals(cedulaA)){
                     Persona persona = personaDAO.read(cedula);
-		    Usuario usuario = new Usuario(file.readUTF(), file.readUTF(), cedula, persona.getNombre(), persona.getApellido(), persona.getTelefono());
+		    Usuario usuario = new Usuario(cedula, persona.getNombre(), persona.getApellido(), persona.getTelefono(), file.readUTF(), file.readUTF());
                     return usuario;
                 }
                 pos += tam;
@@ -67,7 +66,7 @@ public class UsuarioDAO {
             while (pos < file.length()) {                
                 String cedulaA = file.readUTF().trim();
 		Persona persona = personaDAO.read(cedula);
-		Usuario usr = new Usuario(file.readUTF(), file.readUTF(), cedulaA, persona.getNombre(), persona.getApellido(), persona.getTelefono());
+		Usuario usr = new Usuario(cedulaA, persona.getNombre(), persona.getApellido(), persona.getTelefono(), file.readUTF(), file.readUTF());
                 if(cedula.equals(cedulaA)){
                     usr = usuario;
                 }
@@ -93,7 +92,7 @@ public class UsuarioDAO {
                 String cedulaA = file.readUTF().trim();
                 if(!cedula.equals(cedulaA)){
                     Persona persona = personaDAO.read(cedula);
-		    Usuario usuario = new Usuario(file.readUTF(), file.readUTF(), cedulaA, persona.getNombre(), persona.getApellido(), persona.getTelefono());
+		    Usuario usuario = new Usuario(cedulaA, persona.getNombre(), persona.getApellido(), persona.getTelefono(), file.readUTF(), file.readUTF());
                     usuarios.add(usuario);
                 }
                 pos += tam;
@@ -116,7 +115,7 @@ public class UsuarioDAO {
             while (pos < file.length()) {
 		String cedula = file.readUTF().trim();
 		Persona persona = personaDAO.read(cedula);
-		Usuario usuario = new Usuario(file.readUTF(), file.readUTF(), cedula, persona.getNombre(), persona.getApellido(), persona.getTelefono());
+		Usuario usuario = new Usuario(cedula, persona.getNombre(), persona.getApellido(), persona.getTelefono(), file.readUTF(), file.readUTF());
                 pos += tam;
 		usuarios.add(usuario);
             }
@@ -125,5 +124,16 @@ public class UsuarioDAO {
             ex.printStackTrace();
         }
 	return usuarios;
+    }
+    
+    public Usuario login(String usuario, String pass) {
+	for(Usuario u : findAll()){
+	    if(usuario.equals(u.getUsuario())){
+                if(pass.equals(u.getContrasenia())){
+                    return u;
+                }
+            }
+	}
+	return null;
     }
 }

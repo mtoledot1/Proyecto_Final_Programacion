@@ -14,7 +14,7 @@ public class Usuario extends Persona{
     tamaño = 49 bytes
     */
 
-    public Usuario(String usuario, String contrasenia, String cedula, String nombre, String apellido, String telefono) {
+    public Usuario(String cedula, String nombre, String apellido, String telefono, String usuario, String contrasenia) {
 	super(cedula, nombre, apellido, telefono);
 	setUsuario(usuario);
 	setContrasenia(contrasenia);
