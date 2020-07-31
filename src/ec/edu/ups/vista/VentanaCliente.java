@@ -391,7 +391,7 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
 	    String cedula = txtCedula.getText();
 	    String nombre = txtNombre.getText();
 	    String apellido = txtApellido.getText();
-	    String telefono = lblTelefono.getText();
+	    String telefono = txtTelefono.getText();
 	    String ruc = txtRuc.getText();
 	    String nombreC = txtNombreC.getText();
 	    String direccion = txtDireccion.getText();
@@ -401,6 +401,7 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
 //            JOptionPane.showMessageDialog(this, mensaje);
         }
 	controladorCliente.verCliente((DefaultTableModel) jTable1.getModel());
+	limpiar();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -411,7 +412,7 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
 		txtCedula.setText(c.getPropietario().getCedula());
 		txtNombre.setText(c.getPropietario().getNombre());
 		txtApellido.setText(c.getPropietario().getApellido());
-		lblTelefono.setText(c.getPropietario().getTelefono());
+		txtTelefono.setText(c.getPropietario().getTelefono());
 		txtNombreC.setText(c.getNombre());
 		txtDireccion.setText(c.getDireccion());
 		txtTelefonoC.setText(c.getTelefono());
@@ -425,7 +426,7 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
         String cedula = txtCedula.getText();
 	String nombre = txtNombre.getText();
 	String apellido = txtApellido.getText();
-	String telefono = lblTelefono.getText();
+	String telefono = txtTelefono.getText();
 	String ruc = txtRuc.getText();
 	String nombreC = txtNombreC.getText();
 	String direccion = txtDireccion.getText();
@@ -433,6 +434,7 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
 	controladorPersona.actualizar(cedula, nombre, apellido, telefono);
 	controladorCliente.actualizar(cedula, ruc, nombreC, apellido, telefonoC, direccion);
 	controladorCliente.verCliente((DefaultTableModel) jTable1.getModel());
+	limpiar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
@@ -440,6 +442,7 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
 	controladorPersona.eliminar(controladorCliente.buscarCliente(ruc).getPropietario().getCedula());
 	controladorCliente.eliminar(ruc);
 	controladorCliente.verCliente((DefaultTableModel) jTable1.getModel());
+	limpiar();
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated

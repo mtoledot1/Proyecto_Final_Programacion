@@ -32,6 +32,7 @@ public class ClienteDAO {
 	    file.writeUTF(cliente.getDireccion());
 	    file.writeUTF(cliente.getTelefono());
 	    file.writeUTF(cliente.getPropietario().getCedula());
+	    System.out.println(file.length());
 	} catch (IOException e) {
 	    System.out.println("Error de lectura y escritura: ");
 	    e.printStackTrace();

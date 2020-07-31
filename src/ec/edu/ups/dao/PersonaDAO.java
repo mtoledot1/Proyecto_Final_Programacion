@@ -11,7 +11,7 @@ import java.util.List;
 public class PersonaDAO {
     
     private RandomAccessFile file;
-    private int tam = 76;
+    private int tam = 78;
     
     public PersonaDAO(){
 	try{
@@ -29,6 +29,7 @@ public class PersonaDAO {
 	    file.writeUTF(persona.getNombre());
 	    file.writeUTF(persona.getApellido());
 	    file.writeUTF(persona.getTelefono());
+	    System.out.println(file.getFilePointer());
 	}catch(IOException e){
 	    System.out.println("Error de lectura y escritura: ");
 	    e.printStackTrace();
