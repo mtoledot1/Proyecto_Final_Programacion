@@ -11,7 +11,7 @@ import java.util.List;
 public class PersonaDAO {
     
     private RandomAccessFile file;
-    private int tam = 78;
+    private int tam = 76;
     
     public PersonaDAO(){
 	try{
@@ -84,7 +84,7 @@ public class PersonaDAO {
 	cedula = cedula.trim();
         try {
             int pos = 0;
-            while (pos < file.length()-1) {
+            while (pos < file.length()) {
 		file.seek(pos);
                 String cedulaA = file.readUTF().trim();
                 if(!cedula.equals(cedulaA)){

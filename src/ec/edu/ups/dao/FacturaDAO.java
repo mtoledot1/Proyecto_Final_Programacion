@@ -15,7 +15,7 @@ public class FacturaDAO {
     private ProductoDAO productoDAO;
     private ClienteDAO clienteDAO;
     private RandomAccessFile file;
-    private int tam = 75;
+    private int tam = 69;
     
     public FacturaDAO(ProductoDAO productoDAO, ClienteDAO clienteDAO){
 	this.clienteDAO = clienteDAO;
@@ -30,12 +30,9 @@ public class FacturaDAO {
     
     public void create(Factura factura){
 	try{
-	    if(file.length() > 0){
-		long longi = file.length()-6;
-		file.setLength(longi);
-	    }
 	    file.seek(file.length());
-	    file.writeInt(tam+(factura.getProductos().size()*6));//se guarda el tamaño del registro
+	    int reg = tam+(factura.getProductos().size()*4);
+	    file.writeInt(reg);//se guarda el tamaño del registro
 	    file.writeInt(factura.getCodigo());// se guarda el codigo
 	    String fecha = factura.getFecha().toString();
 	    fecha = fecha.substring(0,19);
@@ -51,6 +48,7 @@ public class FacturaDAO {
 	    //se guarda el ruc del cliente
 	    file.writeUTF(factura.getCliente().getRuc());
 	    //se guardan los códigos de los productos
+	    System.out.println(file.length());
 	    for(Producto p : factura.getProductos())
 		file.writeInt(p.getId());
 	}catch(IOException ex){
@@ -62,7 +60,7 @@ public class FacturaDAO {
     public Factura read(int codigo){
 	try{
 	    int salto = 0;
-	    while(salto < file.length()-1){
+	    while(salto < file.length()){
 		file.seek(salto);
 		salto += file.readInt();
 		int codigoA = file.readInt();
@@ -92,7 +90,7 @@ public class FacturaDAO {
         try {
             int pos = 0;
 	    file.seek(pos);
-            while (pos < (file.length()-6)) {
+            while (pos < (file.length())) {
 		pos += file.readInt();
                 int cod = file.readInt();
 		Factura fac;
@@ -124,7 +122,7 @@ public class FacturaDAO {
         try {
             int pos = 0;
 	    file.seek(pos);
-            while (pos < (file.length()-6)) {
+            while (pos < (file.length())) {
 		pos += file.readInt();
                 int cod = file.readInt();
 		Factura fac = new Factura(cod, null, LocalDateTime.parse(file.readUTF()+"."), file.readDouble(), file.readDouble(), file.readDouble(), true);
@@ -133,6 +131,7 @@ public class FacturaDAO {
 		Cliente cliente = clienteDAO.read(file.readUTF());
 		fac.setCliente(cliente);
 		while(file.getFilePointer() <= pos){
+		    System.out.println(file.getFilePointer());
 		    fac.agregarProducto(productoDAO.read(file.readInt()));
 		}
 		facturas.add(fac);

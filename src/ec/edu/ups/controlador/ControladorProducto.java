@@ -56,8 +56,9 @@ public class ControladorProducto {
     
     public List<Producto> productosPorBodega(int codigo){
 	ArrayList<Producto> productos = new ArrayList<>();
-	for(Producto p : productoDAO.findAll()){
-	    if(producto.getBodega().getCodigo() == codigo)
+	List<Producto> pr = productoDAO.findAll();
+	for(Producto p : pr){
+	    if(p.getBodega().getCodigo() == codigo)
 		productos.add(p);
 	}
         return productos;

@@ -34,7 +34,7 @@ public class VentanaFacturas extends javax.swing.JInternalFrame {
     
     private String mensaje;
     private String mensajeError;
-    private Producto producto;
+    private List<Producto> productos;
     private Cliente cliente;
     private ControladorFactura controladorFactura;
     private ControladorCliente controladorCliente;
@@ -46,6 +46,7 @@ public class VentanaFacturas extends javax.swing.JInternalFrame {
     
     public VentanaFacturas(ControladorFactura controladorFactura, ControladorCliente controladorCliente, ControladorProducto controladorProducto, VentanaPrincipal ventanaPrincipal) {
         initComponents();
+	productos = new ArrayList<Producto>();
 	this.controladorFactura = controladorFactura;
 	this.controladorCliente = controladorCliente;
 	this.controladorProducto = controladorProducto;
@@ -244,13 +245,10 @@ public class VentanaFacturas extends javax.swing.JInternalFrame {
 	this.ventanaGestionFacturas = ventanaGestionFacturas;
     }
 
-    public Producto getProducto() {
-	return producto;
-    }
-
     public void setProducto(int codigo, int stock) {
-	producto = controladorProducto.buscar(codigo);
+	Producto producto = controladorProducto.buscar(codigo);
 	producto.setStock(stock);
+	productos.add(producto);
 	controladorFactura.agregarProducto(producto);
 	controladorFactura.calcularSubtotal();
 	controladorFactura.calcularIVA();
@@ -274,6 +272,7 @@ public class VentanaFacturas extends javax.swing.JInternalFrame {
 	txtNombreP.setText(cliente.getPropietario().getNombre().trim());
 	txtApellido.setText(cliente.getPropietario().getApellido().trim());
 	txtTelefonoP.setText(cliente.getPropietario().getTelefono().trim());
+	controladorFactura.getFactura().setCliente(cliente);
 	btnSelCliente.setEnabled(false);
     }
     
@@ -679,7 +678,14 @@ public class VentanaFacturas extends javax.swing.JInternalFrame {
         if(txtCliente.getText().isEmpty() || txtFecha.getText().isEmpty() || txtID.getText().isEmpty() || txtIVA.getText().isEmpty() || txtSubtotal.getText().isEmpty() || txtTotal.getText().isEmpty()){
 //            JOptionPane.showMessageDialog(this, mensajeError);
         } else {
+	    controladorFactura.getFactura().setCliente(cliente);
+	    for(Producto p : productos)
+		controladorFactura.agregarProducto(p);
+	    controladorFactura.calcularSubtotal();
+	    controladorFactura.calcularIVA();
+	    controladorFactura.calcularTotal();
 	    controladorFactura.guardarFactura();
+	    this.dispose();
 //            JOptionPane.showMessageDialog(this, mensaje);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -701,7 +707,7 @@ public class VentanaFacturas extends javax.swing.JInternalFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int fila = tblDatos.getSelectedRow();
 	int codigo = (int) tblDatos.getValueAt(fila, 0);
-	producto = controladorProducto.buscar(codigo);
+	Producto producto = controladorProducto.buscar(codigo);
 	controladorFactura.quitarProducto(producto);
 	actualizar();
     }//GEN-LAST:event_btnEliminarActionPerformed
