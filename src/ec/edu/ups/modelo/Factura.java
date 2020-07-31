@@ -32,6 +32,7 @@ public class Factura {
 
     public Factura(int codigo, Cliente cliente, LocalDateTime fecha, double subtotal, double IVA, double total, boolean estado) {
 	productos = new ArrayList<>();
+	this.codigo = codigo;
 	this.cliente = cliente;
 	this.fecha = fecha;
 	this.subtotal = subtotal;

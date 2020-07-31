@@ -5,96 +5,77 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.dao.UsuarioDAO;
 import ec.edu.ups.modelo.Usuario;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author braya
  */
 public class ControladorUsuario {
-     private Usuario usuario;
-     private Usuario sesion;
-//    private UsuarioDao usuarioDAO;
+    private Usuario usuario;
+    private Usuario sesion;
+    private UsuarioDAO usuarioDAO;
 
-    public ControladorUsuario() {
+    public ControladorUsuario(UsuarioDAO usuarioDAO) {
+	this.usuarioDAO = usuarioDAO;
+    }
+
+    public Usuario getSesion() {
+	return sesion;
+    }
+
+    public void setSesion(Usuario sesion) {
+	this.sesion = sesion;
     }
     
-    /*public boolean iniciarSesion(String correo, String contrasenia){
+    public boolean iniciarSesion(String correo, String contrasenia){
         usuario = usuarioDAO.login(correo, contrasenia);
 	if(usuario != null){
 	    sesion = usuario;
 	    return true;
 	}else
 	    return false;
-    }*/
+    }
     
     public Usuario crearUsuario(String cedula, String nombre, String apellido, String telefono, String correo, String contraseña){
         usuario = new Usuario(cedula, nombre, apellido, telefono, correo, contraseña);
-        //usuarioDAO.create(usuario);
+        usuarioDAO.create(usuario);
         return usuario;
     }
     
     public void actualizar(String cedula, String nombre, String apellido, String telefono, String correo, String contraseña){
         usuario = new Usuario(cedula, nombre, apellido, telefono, correo, contraseña);
-        //clienteDAO.update(cliente);
+        usuarioDAO.update(usuario);
     }
     
     public void eliminar(String cedula){
-        //clienteDAO.delete(cedula);
+        usuarioDAO.delete(cedula);
     }
     
     public Usuario buscarCliente(String cedula){
-        //clienteDAO.read(cedula);
+        usuarioDAO.read(cedula);
         return usuario;
     }
-    
-    //aplicación de excepciones 
-    public void validacionCedula(String cedula)throws ExcepcionValidacion,NumberFormatException,ExcepcionTamaño{
-          
-        int n;
-        int suma = 0;
-        int c;
-        int resta = 0;
-        int ult;
-        int num;
-        if (cedula.length() != 10) {
-            throw new ExcepcionTamaño();
-        }
-        for (int i = 0; i < cedula.length(); i++) {
-            //int a char
-            n = (char) Integer.parseInt(cedula.charAt(i)+"");
-            //pares
-            if (i % 2 == 0) {
-                n = n * 2;
-                if (n > 9) {
-                    n = n - 9;
-                }
-            }
-            suma = suma + n;
-        }
-        if (suma % 10 != 0) {
-            c = ((suma / 10) + 1) * 10;
-            resta = c - suma;
-        }
-        ult=  Integer.parseInt(cedula.charAt(9)+"");
-
-        if (ult==resta) {
-          System.out.println("Cedula correcta");
-        }else{
-                throw new ExcepcionValidacion();
-        }
+        
+    public List<Usuario> listar(){
+	return usuarioDAO.findAll();
     }
     
-    class ExcepcionTamaño extends Exception {
-
-        public ExcepcionTamaño() {
-            super("La cédula solo puede tener 10 dígitos");
-        }
-    }
-
-    class ExcepcionValidacion extends Exception {
-        public ExcepcionValidacion() {
-            super("Cedula incorrecta");
-        }
+    public void verUsuarios(DefaultTableModel tabla){
+        List<Usuario> usuarios;
+        usuarios = usuarioDAO.findAll();
+        tabla.setRowCount(0);
+	for(int i = 0; i < usuarios.size(); i++){
+	    tabla.addRow(new Object[]{
+		usuarios.get(i).getCedula().trim(),
+		usuarios.get(i).getNombre().trim(),
+		usuarios.get(i).getApellido().trim(),
+		usuarios.get(i).getTelefono().trim(),
+		usuarios.get(i).getUsuario().trim()
+	    });
+	}
     }
 }

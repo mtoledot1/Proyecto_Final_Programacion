@@ -19,7 +19,7 @@ public class Cliente {
     tamaño = 193 bytes
     */
     
-    public Cliente(String ruc, String nombre, String cedulaPropietario, String direccion, String telefono, Persona propietario) {
+    public Cliente(String ruc, String nombre, String direccion, String telefono, Persona propietario) {
 	setRuc(ruc);
 	setNombre(nombre);
 	setDireccion(direccion);

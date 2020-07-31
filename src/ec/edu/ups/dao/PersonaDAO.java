@@ -84,7 +84,7 @@ public class PersonaDAO {
 	cedula = cedula.trim();
         try {
             int pos = 0;
-            while (pos < file.length()) {
+            while (pos < file.length()-1) {
 		file.seek(pos);
                 String cedulaA = file.readUTF().trim();
                 if(!cedula.equals(cedulaA)){

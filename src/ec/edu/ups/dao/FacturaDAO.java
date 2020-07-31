@@ -30,7 +30,10 @@ public class FacturaDAO {
     
     public void create(Factura factura){
 	try{
-	    file.setLength(file.length()-6);
+	    if(file.length() > 0){
+		long longi = file.length()-6;
+		file.setLength(longi);
+	    }
 	    file.seek(file.length());
 	    file.writeInt(tam+(factura.getProductos().size()*6));//se guarda el tamaño del registro
 	    file.writeInt(factura.getCodigo());// se guarda el codigo
@@ -140,5 +143,12 @@ public class FacturaDAO {
             ex.printStackTrace();
         }
 	return null;
+    }
+    
+    public int obtenerUltimoCodigo(){
+	if(findAll().size() == 0)
+	    return 0;
+	else
+	    return findAll().get(findAll().size()-1).getCodigo();
     }
 }

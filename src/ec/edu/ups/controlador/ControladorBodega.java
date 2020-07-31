@@ -5,107 +5,72 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.dao.BodegaDAO;
 import ec.edu.ups.modelo.Bodega;
 import ec.edu.ups.modelo.Producto;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author braya
  */
 public class ControladorBodega {
-    private Producto producto;
-    private ArrayList<Producto> productos;
+    private BodegaDAO bodegaDAO;
+    private ControladorBodega controladorBodega;
     private Bodega bodega;
     
     //MÉTODOS
-    
-    
     /**
      * @param producto parametro tipo Producto
-     */
-    
-    
-    public ControladorBodega(ArrayList<Producto> productos){
-        
-        this.productos=productos;
-        
+     */    
+    public ControladorBodega(BodegaDAO bodegaDAO){
+	this.bodegaDAO = bodegaDAO;
     }
 
-    public Bodega crearBodega(int codigo,String nombre){
-          bodega=new Bodega();
-          //llama a bodegaImpl para crear una bodega
-       // bodegaDAO.create(bodega);
-        
-        return bodega;
+    public void crearBodega(int codigo, String nombre, int tamanio, int productos){
+	bodega=new Bodega(codigo, nombre, tamanio, productos);
+	bodegaDAO.create(bodega);
     }
     
-    public Producto añadirProducto(int id, String nombre, String descripcion, int stock, double precio, int bodega) {
-        producto=new Producto();
-       //se llama al DaoImpl
-      //  productoDAO.create(producto);
-        
-      return producto;
+    public void actualizar(int codigo, String nombre, int tamanio, int productos){
+	bodega=new Bodega(codigo, nombre, tamanio, productos);
+	bodegaDAO.update(bodega);
     }
     
-    
-    
-    public void quitarProducto(int id){
-        //se llama al DaoImpl
-       // productoDAO.delete(id);
+    public void eliminar(int codigo){
+	bodegaDAO.delete(codigo);
+	List<Bodega> bodegas = listar();
+	
     }
     
-    //Método para almacenar el producto en bodega
-    public void almacenar(Producto producto){
-       //se agrega al array los productos
-        productos.add(producto);
-        
-    }
-    
-    //Método para retirar el producto en bodega
-    public Producto retirar(int id){
-        
-        
-            for(Producto pro: productos){
-                
-                //"pro.getId": obtener el id del MODELO del PRODUCTO
-                
-                /*if(pro.getId==id){
-                    productos.remove(pro);
-                    break;
-                }else{
-                System.out.println("El producto no existe");
-                }*/
-            }
-        
-        
-        
-        return null;
+    public Bodega buscar(int codigo){
+	return bodegaDAO.read(codigo);
     }
     
     public int codigoBodega() {
-        
-        //el bodegaDao llama a idbodega que está en el IDAOBodega como : public int idBodega;)
-        
-      //  int cont = bodegaDAO.idBodega();
-       // return (++cont);
-       
+       //el bodegaDao llama a idbodega que está en el IDAOBodega como : public int idBodega;) 
+       //int cont = bodegaDAO.idBodega();
+       //return (++cont);
        return 0;
     }
     
+    public List<Bodega> listar() {
+	return bodegaDAO.findAll();
+    }
     
-     public List<Producto> listarProductos(int id) {
-            
-         
-        for(int i=0; i<productos.size();i++){
-            productos.get(i);
-        }
-        
-        return productos;
-        
-     }
-    
-    
-    
+    public void verUsuarios(DefaultTableModel tabla){
+        List<Bodega> bodegas;
+        bodegas = bodegaDAO.findAll();
+        tabla.setRowCount(0);
+	for(int i = 0; i < bodegas.size(); i++){
+	    tabla.addRow(new Object[]{
+		bodegas.get(i).getCodigo(),
+		bodegas.get(i).getNombre().trim(),
+		bodegas.get(i).getTamanio(),
+		bodegas.get(i).getProductos()
+	    });
+	}
+    }
 }

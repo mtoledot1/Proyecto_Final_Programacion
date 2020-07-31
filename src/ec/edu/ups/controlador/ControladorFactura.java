@@ -5,10 +5,11 @@
  */
 package ec.edu.ups.controlador;
 
+import ec.edu.ups.dao.FacturaDAO;
 import ec.edu.ups.modelo.*;
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,117 +18,94 @@ import java.util.List;
 public class ControladorFactura {
 
     //lista de facturas
-    private ArrayList<Factura> facturas;
     private Factura factura;
-    //private FacturaDao facturaDAO;
-    private ArrayList<Producto> productos;
+    private FacturaDAO facturaDAO;
 
-    public ControladorFactura(ArrayList<Factura> facturas, ArrayList<Producto> productos) {
-        this.facturas = facturas;
-        this.productos = productos;
+    public ControladorFactura(FacturaDAO facturaDAO) {
+        this.facturaDAO = facturaDAO;
     }
 
-    
-    
-    
-
     //para crear la factura pasa como parámetros sus atributos.
-    public Factura crearFactura(Cliente cliente, Date fecha, Producto[] productos, double subtotal, double IVA, boolean estado) {
-
-        factura = new Factura();
-        // facturaDAO.create(factura);
-        return factura;
+    public void crearFactura(int codigo, Cliente cliente, LocalDateTime fecha, double subtotal, double IVA, double total, boolean estado) {
+        factura = new Factura(codigo, cliente, fecha, subtotal, IVA, total, estado);
+    }
+    
+    public void guardarFactura(){
+	facturaDAO.create(factura);
     }
 
     public void anularFactura(int codigo) {
-            boolean estado;
-        
-             //obitiene el id de la factura
-            // if(factura.getId==codigo){
-                 estado=false;
-            // }
-             
-             
-         
-        
-        
-        
+	for(Factura f : facturaDAO.findAll())
+	if(f.getCodigo() == codigo){
+	    f.setEstado(false);
+	    facturaDAO.update(f);
+	}
     }
-
-    public boolean validarFactura(int id) {
-        boolean estado;
-            //    facturaDAO.read(id);
-                estado=true;
-        return estado;
-    }
-
-    public double calcularIVA(double precio, int stock) {
-        //
-        double iva = (precio * 0.12);
-
+    
+    public double calcularIVA() {
+        double iva = (factura.getSubtotal() * factura.getIVA());
         return iva;
     }
 
-    public double calcularSubtotal(double precio, int stock) {
-        //subtotal : precio * unidad 
-
-        double subtotal;
-        subtotal = precio * stock;
-
-        return subtotal;
+    public void calcularSubtotal() {
+	double subtotal = 0;
+	for(Producto p : factura.getProductos()){
+	    subtotal += p.getPrecio() * p.getStock();
+	}
+	factura.setSubtotal(subtotal);
     }
 
-    public double calcularTotal(double precio,int stock) {
-        
-        double total;
-        
-        total=(precio*stock)+(precio*0.12);
-        
-        
-        return total;
-    }
-
-    public Factura buscarFacturas(int id) {
-
-        //llama a facturaImpl para buscar la factura
-        //  factura = facturaDAO.read(id);
-        if (factura != null) {
-            return factura;
-        } else {
-
-            return null;
-        }
-
+    public void calcularTotal() {
+        double total = calcularIVA() + factura.getSubtotal();
+	factura.setTotal(total);
     }
 
     public int codigoFactura() {
-        
-        // facturaDao llama a idFactura que está en el IDAOFactura como : public int idFactura;)
-        
-      //  int cont = facturaDAO.idFactura();
-       // return (++cont);
-       
-       return 0;
+	return facturaDAO.obtenerUltimoCodigo();
     }
     
     
-     public List<Factura> listarFacturas() {
-         
-         //llama al DAOimpl de factura
-       // return facturaDAO.findAll();
-       return null;
+    public List<Factura> listarFacturas() {
+	//llama al DAOimpl de factura
+        return facturaDAO.findAll();
     }
 
-     public List<Factura> listarFacturaDeCliente(String ruc) {
-         
-         
-         //llama al DAOimpl del cliente para obtener las facturas: public List<Facturas> facturasCliente(String ruc);
-         // return facturasDAO.facturasCliente(ruc);
-         
-         
-       return null;
-     }
-     
-     
-     
+    public void agregarProducto(Producto producto){
+	factura.agregarProducto(producto);
+    }
+    
+    public void quitarProducto(Producto producto){
+	factura.quitarProducto(producto);
+    }
+    
+    public void actualizarProducto(Producto producto){
+	factura.actualizarProductoÇ(producto);
+    }
+    
+    public Factura getFactura(){
+	return factura;
+    }
+    
+    public void verFacturas(DefaultTableModel tabla){
+        List<Factura> facturas;
+        facturas = facturaDAO.findAll();
+        tabla.setRowCount(0);
+	for(int i = 0; i < facturas.size(); i++){
+	    String estado;
+	    if(facturas.get(i).isEstado())
+		estado = "Activo";
+	    else
+		estado = "Anulado";
+	    tabla.addRow(new Object[]{
+		facturas.get(i).getCodigo(),
+		facturas.get(i).getCliente().getRuc().trim(),
+		facturas.get(i).getFecha().toString().substring(0, 19),
+		facturas.get(i).getProductos().size(),
+		facturas.get(i).getSubtotal(),
+		facturas.get(i).getIVA(),
+		facturas.get(i).getTotal(),
+		estado
+	    });
+	}
+    }
 }

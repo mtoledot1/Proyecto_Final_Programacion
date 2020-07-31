@@ -5,8 +5,22 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorBodega;
+import ec.edu.ups.controlador.ControladorCliente;
+import ec.edu.ups.controlador.ControladorFactura;
+import ec.edu.ups.controlador.ControladorPersona;
+import ec.edu.ups.controlador.ControladorProducto;
+import ec.edu.ups.controlador.ControladorUsuario;
+import ec.edu.ups.dao.BodegaDAO;
+import ec.edu.ups.dao.ClienteDAO;
+import ec.edu.ups.dao.FacturaDAO;
+import ec.edu.ups.dao.PersonaDAO;
+import ec.edu.ups.dao.ProductoDAO;
+import ec.edu.ups.dao.UsuarioDAO;
+import java.io.File;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.JDesktopPane;
 
 /**
  *
@@ -19,12 +33,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     
     //Ventanas
-    private VentanaRegistrarUsuario ventanaRegistrarUsuario;
+    private VentanaUsuario ventanaRegistrarUsuario;
     private VentanaIniciarSesion ventanaIniciarSecion;
     private VentanaBodegas ventanaBodegas;
-    private VentanaRegistrarCliente ventanaRegistrarCliente;
+    private VentanaCliente ventanaRegistrarCliente;
     private VentanaFacturas ventanaFacturas;
     private VentanaProductos ventanaProductos;
+    private VentanaGestionFacturas ventanaGestionFacturas;
+    private VentanaSeleccionCliente ventanaSeleccionCliente;
+    private VentanaSeleccionProducto ventanaSeleccionProducto;
+    private VentanaInventario ventanaInventario;
+    private VentanaInventarioBodega ventanaInventarioBodega;
+    
+    private ControladorBodega controladorBodega;
+    private ControladorCliente controladorCliente;
+    private ControladorFactura controladorFactura;
+    private ControladorPersona controladorPersona;
+    private ControladorProducto controladorProducto;
+    private ControladorUsuario controladorUsuario;
+    
+    private BodegaDAO bodegaDAO;
+    private ClienteDAO clienteDAO;
+    private FacturaDAO facturaDAO;
+    private PersonaDAO personaDAO;
+    private ProductoDAO productoDAO;
+    private UsuarioDAO usuarioDAO;
     
     //Localizacion
     private Locale localizacion;
@@ -32,15 +65,44 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public VentanaPrincipal() {
         initComponents();
+	
+	File file = new File("datos");
+	if(!file.exists())
+	    file.mkdir();
+	
+	bodegaDAO = new BodegaDAO();
+	personaDAO = new PersonaDAO();
+	clienteDAO = new ClienteDAO(personaDAO);
+	productoDAO = new ProductoDAO(bodegaDAO);
+	usuarioDAO = new UsuarioDAO(personaDAO);
+	facturaDAO = new FacturaDAO(productoDAO, clienteDAO);
+	
+	controladorBodega = new ControladorBodega(bodegaDAO);
+	controladorCliente = new ControladorCliente(clienteDAO, personaDAO);
+	controladorFactura = new ControladorFactura(facturaDAO);
+	controladorPersona = new ControladorPersona(personaDAO);
+	controladorProducto = new ControladorProducto(productoDAO, bodegaDAO);
+	controladorUsuario = new ControladorUsuario(usuarioDAO);
         
-        ventanaRegistrarUsuario = new VentanaRegistrarUsuario();
-        ventanaIniciarSecion = new VentanaIniciarSesion();
-        ventanaBodegas = new VentanaBodegas();
-        ventanaRegistrarCliente = new VentanaRegistrarCliente();
-        ventanaFacturas = new VentanaFacturas();
-        ventanaProductos = new VentanaProductos();
+        ventanaRegistrarUsuario = new VentanaUsuario(controladorUsuario, controladorPersona);
+        ventanaIniciarSecion = new VentanaIniciarSesion(controladorUsuario);
+        ventanaBodegas = new VentanaBodegas(controladorBodega, controladorProducto);
+        ventanaRegistrarCliente = new VentanaCliente(controladorCliente, controladorPersona);
+        ventanaFacturas = new VentanaFacturas(controladorFactura, controladorCliente, controladorProducto, this);
+        ventanaProductos = new VentanaProductos(controladorBodega, controladorProducto);
+	ventanaSeleccionCliente = new VentanaSeleccionCliente(ventanaFacturas,controladorCliente);
+	ventanaSeleccionProducto = new VentanaSeleccionProducto(ventanaFacturas,controladorProducto);
+	ventanaInventario = new VentanaInventario(controladorProducto);
+	ventanaInventarioBodega = new VentanaInventarioBodega(controladorProducto, controladorBodega);
+	ventanaFacturas.setVentanaGestionFacturas(ventanaGestionFacturas);
+	ventanaFacturas.setVentanaSeleccionCliente(ventanaSeleccionCliente);
+	ventanaFacturas.setVentanaSeleccionProducto(ventanaSeleccionProducto);
+	ventanaGestionFacturas = new VentanaGestionFacturas(ventanaFacturas, controladorFactura, this);
     }
-
+    public JDesktopPane getDesktopPane(){
+	return this.desktopPane;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,6 +122,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         productosMenuItem = new javax.swing.JMenuItem();
         facturasMenuItem = new javax.swing.JMenuItem();
         salirMenuItem = new javax.swing.JMenuItem();
+        consultasMenu = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         idiomasMenu = new javax.swing.JMenu();
         espanolMenuItem = new javax.swing.JMenuItem();
         ingleslMenuItem = new javax.swing.JMenuItem();
@@ -130,6 +195,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         inicioMenu.add(salirMenuItem);
 
         menuBar.add(inicioMenu);
+
+        consultasMenu.setText("Consulta");
+
+        jMenuItem1.setText("Inventario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        consultasMenu.add(jMenuItem1);
+
+        jMenuItem2.setText("Inventario por Bodegas");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        consultasMenu.add(jMenuItem2);
+
+        menuBar.add(consultasMenu);
 
         idiomasMenu.setMnemonic('e');
         idiomasMenu.setText("Idiomas");
@@ -209,8 +294,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void facturasMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturasMenuItemActionPerformed
         // TODO add your handling code here:
         if(ventanaFacturas.isVisible() == false){
-            desktopPane.add(ventanaFacturas);
-            ventanaFacturas.setVisible(true);
+            desktopPane.add(ventanaGestionFacturas);
+            ventanaGestionFacturas.setVisible(true);
         }
     }//GEN-LAST:event_facturasMenuItemActionPerformed
 
@@ -235,6 +320,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             ventanaRegistrarUsuario.setVisible(true);
         }
     }//GEN-LAST:event_registrarMenuItermActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+	if(ventanaInventario.isVisible() == false){
+            desktopPane.add(ventanaInventario);
+            ventanaInventario.setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        if(ventanaInventarioBodega.isVisible() == false){
+            desktopPane.add(ventanaInventarioBodega);
+            ventanaInventarioBodega.setVisible(true);
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     public void cambiarIdioma(){
         
@@ -272,7 +371,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //VentanaRegistrarCliente
         ventanaRegistrarCliente.getLbCedula().setText(mensajes.getString("cedula"));
         ventanaRegistrarCliente.getLbNombre().setText(mensajes.getString("nombre"));
-        ventanaRegistrarCliente.getLbApellido().setText(mensajes.getString("apellido"));
         ventanaRegistrarCliente.getLbTelefono().setText(mensajes.getString("telefono"));
         ventanaRegistrarCliente.getLbDireccion().setText(mensajes.getString("direccion"));
         ventanaRegistrarCliente.getBtnIngresar().setText(mensajes.getString("ingresar"));
@@ -287,6 +385,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaProductos.getBtnAgregar().setText(mensajes.getString("guardar"));
         ventanaProductos.setMensajeError(mensajes.getString("error"));
         ventanaProductos.setMensaje(mensajes.getString("registrarP"));
+	ventanaProductos.setMensajeErrorTam(mensajes.getString("errorTam"));
         
         //VentanaBodega
         ventanaBodegas.getLbCodigo().setText(mensajes.getString("codigo"));
@@ -345,6 +444,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem bodegasMenuItem;
     private javax.swing.JMenuItem clientesMenuItem;
+    private javax.swing.JMenu consultasMenu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem espanolMenuItem;
     private javax.swing.JMenuItem facturasMenuItem;
@@ -352,6 +452,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem ingleslMenuItem;
     private javax.swing.JMenuItem iniciarSesionMenuItem;
     private javax.swing.JMenu inicioMenu;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem productosMenuItem;
     private javax.swing.JMenuItem registrarMenuIterm;

@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.controlador.ControladorUsuario;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,8 +23,10 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
      */
     private String mensaje;
     private String mensajeError;
+    private ControladorUsuario controladorUsuario;
     
-    public VentanaIniciarSesion() {
+    public VentanaIniciarSesion(ControladorUsuario controladorUsuario) {
+	this.controladorUsuario = controladorUsuario;
         initComponents();
     }
     /**
@@ -88,17 +91,16 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(83, 83, 83)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbUsuario)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(18, 18, 18)
+                            .addComponent(lbUsuario)
+                            .addGap(20, 20, 20))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                            .addGap(18, 18, 18)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lbContrasena)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(83, Short.MAX_VALUE)))
@@ -134,10 +136,13 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        if(txtUsuario.getText().equalsIgnoreCase("") || txtContrasena.getText().equalsIgnoreCase("")){
-            JOptionPane.showMessageDialog(this, mensajeError);
+	String usuario = txtUsuario.getText();
+	String contra = new String(txtContrasena.getPassword());
+        if(usuario.isEmpty() || contra.isEmpty()){
+            //JOptionPane.showMessageDialog(this, mensajeError);
         } else {
-            JOptionPane.showMessageDialog(this, mensaje);
+	    controladorUsuario.iniciarSesion(usuario, contra);
+            //JOptionPane.showMessageDialog(this, mensaje);
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
