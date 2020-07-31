@@ -116,11 +116,11 @@ En el paquete ec.edu.ups.controlador encontraremos:
 
 Clase “ControladorProducto”: 
 
-![ProductoC](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/16598f4646df54727654439be08de33d213513d8/src/ec/edu/ups/controlador/ControladorProducto.java)
+![ProductoC]()
 
 Clase “ControladorCliente”: 
 
-![ClienteC](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/16598f4646df54727654439be08de33d213513d8/src/ec/edu/ups/controlador/ControladorCliente.java)
+![ClienteC](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/07ce37d6ebc312a7ec40b867ac6bf04bb77ffbe8/src/ec/edu/ups/controlador/ControladorCliente.java)
 
 Clase “ControladorUsuario”: 
 
@@ -128,11 +128,11 @@ Clase “ControladorUsuario”:
 
 Clase “ControladorBodega”: 
 
-![BodegaC](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/16598f4646df54727654439be08de33d213513d8/src/ec/edu/ups/controlador/ControladorBodega.java)
+![BodegaC](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/07ce37d6ebc312a7ec40b867ac6bf04bb77ffbe8/src/ec/edu/ups/controlador/ControladorBodega.java)
 
 Clase “ControladorFactura”: 
 
-![FacturaC](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/16598f4646df54727654439be08de33d213513d8/src/ec/edu/ups/controlador/ControladorFactura.java)
+![FacturaC](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/07ce37d6ebc312a7ec40b867ac6bf04bb77ffbe8/src/ec/edu/ups/controlador/ControladorFactura.java)
 
 En el paquete ec.edu.ups.idioma encontraremos:
 
@@ -148,19 +148,60 @@ En el paquete ec.edu.ups.ventana encontraremos:
 
 VentanaPrincipal:
 
-![PrincipalP]()
+![PrincipalP](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaPrincipal.PNG)
 
 VentanaClientes:
 
-![ClientesP]()
+![ClientesP](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaCliente.PNG)
 
-VentanaRegistrar:
+VentanaBodega:
 
-![RegistrarV]()
+![BodegaP](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaBodegas.PNG)
+
+
+VentanaFactura:
+
+![FacturaP](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaFactura.PNG)
+
+
+
+VentanaGestionFactura:
+
+![GestionFacturaV](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaGestionFacturas.PNG)
+
 
 VentanaIniciarSesion:
 
-![IniciarSesionV]()
+![IniciarSesion](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaIniciarSesion.PNG)
+
+
+VentanaInventario:
+
+![InventarioV](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaInventario.PNG)
+
+VentanaInventarioBodega:
+
+![InventarioBodegaV](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaInventarioBodega.PNG)
+
+VentanaProducto:
+
+![ProductoV](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaProductos.PNG)
+
+
+VentanaSeleccionCliente:
+
+![SeleccionClienteV](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaSeleccionCliente.PNG)
+
+
+VentanaSeleccionProducto:
+
+![SeleccionProductoV](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaSeleeccionProducto.PNG)
+
+
+VentanaUsuario:
+
+![UsuarioV](https://github.com/mtoledot1/Proyecto_Final_Programacion/blob/rama3/VentanaUsuario.PNG)
+
 
 
 # *HERRAMIENTAS:*
