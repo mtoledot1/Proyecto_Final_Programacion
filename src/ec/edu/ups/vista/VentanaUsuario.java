@@ -469,6 +469,31 @@ public class VentanaUsuario extends javax.swing.JInternalFrame {
     public void setMensajeError(String mensajeError) {
         this.mensajeError = mensajeError;
     }
+
+    public JButton getBntBuscar() {
+	return bntBuscar;
+    }
+
+    public void setBntBuscar(JButton bntBuscar) {
+	this.bntBuscar = bntBuscar;
+    }
+
+    public JButton getBtnActualizar() {
+	return btnActualizar;
+    }
+
+    public void setBtnActualizar(JButton btnActualizar) {
+	this.btnActualizar = btnActualizar;
+    }
+
+    public JButton getBtnEliminar() {
+	return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+	this.btnEliminar = btnEliminar;
+    }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

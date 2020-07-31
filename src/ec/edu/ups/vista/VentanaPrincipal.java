@@ -21,6 +21,8 @@ import java.io.File;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import javax.swing.JDesktopPane;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -85,7 +87,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 	controladorUsuario = new ControladorUsuario(usuarioDAO);
         
         ventanaRegistrarUsuario = new VentanaUsuario(controladorUsuario, controladorPersona);
-        ventanaIniciarSecion = new VentanaIniciarSesion(controladorUsuario);
+        ventanaIniciarSecion = new VentanaIniciarSesion(controladorUsuario,this);
         ventanaBodegas = new VentanaBodegas(controladorBodega, controladorProducto);
         ventanaRegistrarCliente = new VentanaCliente(controladorCliente, controladorPersona);
         ventanaFacturas = new VentanaFacturas(controladorFactura, controladorCliente, controladorProducto, this);
@@ -98,6 +100,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 	ventanaFacturas.setVentanaSeleccionCliente(ventanaSeleccionCliente);
 	ventanaFacturas.setVentanaSeleccionProducto(ventanaSeleccionProducto);
 	ventanaGestionFacturas = new VentanaGestionFacturas(ventanaFacturas, controladorFactura, this);
+	
+	facturasMenuItem.setVisible(false);
+	consultasMenu.setVisible(false);
+	bodegasMenuItem.setVisible(false);
+	clientesMenuItem.setVisible(false);
+	productosMenuItem.setVisible(false);
     }
     public JDesktopPane getDesktopPane(){
 	return this.desktopPane;
@@ -363,6 +371,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaRegistrarUsuario.getBtnRegistrar().setText(mensajes.getString("registrar"));
         ventanaRegistrarUsuario.setMensajeError(mensajes.getString("error"));
         ventanaRegistrarUsuario.setMensaje(mensajes.getString("registro"));
+	ventanaRegistrarUsuario.getBntBuscar().setText(mensajes.getString("buscar"));
+	ventanaRegistrarUsuario.getBtnActualizar().setText(mensajes.getString("actualizar"));
+	ventanaRegistrarUsuario.getBtnEliminar().setText(mensajes.getString("eliminar"));
         
         //VentanaIniciarSecion
         ventanaIniciarSecion.getLbUsuario().setText(mensajes.getString("usuario"));
@@ -379,6 +390,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaRegistrarCliente.getBtnIngresar().setText(mensajes.getString("ingresar"));
         ventanaRegistrarCliente.setMensaje(mensajes.getString("registrarC"));
         ventanaRegistrarCliente.setMensajeError(mensajes.getString("error"));
+	ventanaRegistrarCliente.getBtnBuscar().setText(mensajes.getString("buscar"));
+	ventanaRegistrarCliente.getBtnActualizar().setText(mensajes.getString("actualizar"));
+	ventanaRegistrarCliente.getBtnBorrar().setText(mensajes.getString("eliminar"));
         
         //VentanaProductos
         ventanaProductos.getLbBodega().setText(mensajes.getString("bodega"));
@@ -389,6 +403,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaProductos.setMensajeError(mensajes.getString("error"));
         ventanaProductos.setMensaje(mensajes.getString("registrarP"));
 	ventanaProductos.setMensajeErrorTam(mensajes.getString("errorTam"));
+	ventanaProductos.getBtnActualizar().setText(mensajes.getString("actualizar"));
+	ventanaProductos.getBtnEliminar().setText(mensajes.getString("eliminar"));
         
         //VentanaBodega
         ventanaBodegas.getLbCodigo().setText(mensajes.getString("codigo"));
@@ -396,6 +412,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaBodegas.getBtnCrear().setText(mensajes.getString("guardar"));
         ventanaBodegas.setMensajeError(mensajes.getString("error"));
         ventanaBodegas.setMensaje(mensajes.getString("registrarB"));
+	ventanaBodegas.getBtnBuscar().setText(mensajes.getString("buscar"));
+	ventanaBodegas.getBtnActualizar().setText(mensajes.getString("actualizar"));
+	ventanaBodegas.getBtnEliminar().setText(mensajes.getString("eliminar"));
         
         //VentanaFacturas
         ventanaFacturas.getLbFecha().setText(mensajes.getString("fecha"));
@@ -408,6 +427,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaFacturas.getBtnCancelar().setText(mensajes.getString("cancelar"));
         ventanaFacturas.getLbEstado().setText(mensajes.getString("estado"));
         ventanaFacturas.getChbxEstado().setText(mensajes.getString("act"));
+	
+	//VentanaGestionFacturas
+	ventanaGestionFacturas.getBtnAnular().setText(mensajes.getString("anular"));
+	ventanaGestionFacturas.getBtnCrear().setText(mensajes.getString("registrar"));
 	
 	//VentanaIniciarSesion
 	ventanaIniciarSecion.setMensaje(mensajes.getString("mensaje"));
@@ -450,6 +473,48 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
     }
+
+    public JMenuItem getBodegasMenuItem() {
+	return bodegasMenuItem;
+    }
+
+    public void setBodegasMenuItem(JMenuItem bodegasMenuItem) {
+	this.bodegasMenuItem = bodegasMenuItem;
+    }
+
+    public JMenuItem getClientesMenuItem() {
+	return clientesMenuItem;
+    }
+
+    public void setClientesMenuItem(JMenuItem clientesMenuItem) {
+	this.clientesMenuItem = clientesMenuItem;
+    }
+
+    public JMenu getConsultasMenu() {
+	return consultasMenu;
+    }
+
+    public void setConsultasMenu(JMenu consultasMenu) {
+	this.consultasMenu = consultasMenu;
+    }
+
+    public JMenuItem getFacturasMenuItem() {
+	return facturasMenuItem;
+    }
+
+    public void setFacturasMenuItem(JMenuItem facturasMenuItem) {
+	this.facturasMenuItem = facturasMenuItem;
+    }
+
+    public JMenuItem getProductosMenuItem() {
+	return productosMenuItem;
+    }
+
+    public void setProductosMenuItem(JMenuItem productosMenuItem) {
+	this.productosMenuItem = productosMenuItem;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem bodegasMenuItem;

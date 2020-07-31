@@ -157,6 +157,23 @@ public class VentanaProductos extends javax.swing.JInternalFrame {
     public void setMensajeErrorTam(String mensajeErrorTam) {
 	this.mensajeErrorTam = mensajeErrorTam;
     }
+
+    public JButton getBtnActualizar() {
+	return btnActualizar;
+    }
+
+    public void setBtnActualizar(JButton btnActualizar) {
+	this.btnActualizar = btnActualizar;
+    }
+
+    public JButton getBtnEliminar() {
+	return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+	this.btnEliminar = btnEliminar;
+    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.

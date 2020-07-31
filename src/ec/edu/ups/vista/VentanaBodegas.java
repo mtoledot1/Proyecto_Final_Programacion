@@ -334,6 +334,31 @@ public class VentanaBodegas extends javax.swing.JInternalFrame {
         this.mensajeError = mensajeError;
     }
 
+    public JButton getBtnActualizar() {
+	return btnActualizar;
+    }
+
+    public void setBtnActualizar(JButton btnActualizar) {
+	this.btnActualizar = btnActualizar;
+    }
+
+    public JButton getBtnBuscar() {
+	return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+	this.btnBuscar = btnBuscar;
+    }
+
+    public JButton getBtnEliminar() {
+	return btnEliminar;
+    }
+
+    public void setBtnEliminar(JButton btnEliminar) {
+	this.btnEliminar = btnEliminar;
+    }
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;

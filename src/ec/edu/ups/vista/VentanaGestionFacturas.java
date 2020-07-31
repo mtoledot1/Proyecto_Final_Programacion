@@ -193,6 +193,14 @@ public class VentanaGestionFacturas extends javax.swing.JInternalFrame {
         this.mensajeError = mensajeError;
     }
 
+    public JButton getBtnAnular() {
+	return btnAnular;
+    }
+
+    public void setBtnAnular(JButton btnAnular) {
+	this.btnAnular = btnAnular;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAnular;
     private javax.swing.JButton btnCrear;

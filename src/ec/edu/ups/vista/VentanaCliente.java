@@ -141,6 +141,31 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
         this.mensajeError = mensajeError;
     }
 
+    public JButton getBtnActualizar() {
+	return btnActualizar;
+    }
+
+    public void setBtnActualizar(JButton btnActualizar) {
+	this.btnActualizar = btnActualizar;
+    }
+
+    public JButton getBtnBorrar() {
+	return btnBorrar;
+    }
+
+    public void setBtnBorrar(JButton btnBorrar) {
+	this.btnBorrar = btnBorrar;
+    }
+
+    public JButton getBtnBuscar() {
+	return btnBuscar;
+    }
+
+    public void setBtnBuscar(JButton btnBuscar) {
+	this.btnBuscar = btnBuscar;
+    }
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -24,9 +24,11 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
     private String mensaje;
     private String mensajeError;
     private ControladorUsuario controladorUsuario;
+    private VentanaPrincipal ventanaPrincipal;
     
-    public VentanaIniciarSesion(ControladorUsuario controladorUsuario) {
+    public VentanaIniciarSesion(ControladorUsuario controladorUsuario, VentanaPrincipal ventanaPrincipal) {
 	this.controladorUsuario = controladorUsuario;
+	this.ventanaPrincipal = ventanaPrincipal;
         initComponents();
     }
     /**
@@ -143,6 +145,11 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
         } else {
 	    if(controladorUsuario.iniciarSesion(usuario, contra));{
 		JOptionPane.showMessageDialog(this, mensaje);
+		ventanaPrincipal.getFacturasMenuItem().setVisible(true);
+		ventanaPrincipal.getConsultasMenu().setVisible(true);
+		ventanaPrincipal.getBodegasMenuItem().setVisible(true);
+		ventanaPrincipal.getClientesMenuItem().setVisible(true);
+		ventanaPrincipal.getProductosMenuItem().setVisible(true);
 	    }
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed

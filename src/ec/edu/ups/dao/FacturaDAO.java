@@ -130,7 +130,7 @@ public class FacturaDAO {
 		    fac.setEstado(false);
 		Cliente cliente = clienteDAO.read(file.readUTF());
 		fac.setCliente(cliente);
-		while(file.getFilePointer() <= pos){
+		while(file.getFilePointer() < pos){
 		    System.out.println(file.getFilePointer());
 		    fac.agregarProducto(productoDAO.read(file.readInt()));
 		}
