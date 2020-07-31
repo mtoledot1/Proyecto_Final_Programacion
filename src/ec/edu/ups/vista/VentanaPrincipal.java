@@ -405,6 +405,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaFacturas.getBtnCancelar().setText(mensajes.getString("cancelar"));
         ventanaFacturas.getLbEstado().setText(mensajes.getString("estado"));
         ventanaFacturas.getChbxEstado().setText(mensajes.getString("act"));
+	
+	//VentanaIniciarSesion
+	ventanaIniciarSecion.setMensaje(mensajes.getString("mensaje"));
+	ventanaIniciarSecion.setMensajeError(mensajes.getString("error"));
+	ventanaIniciarSecion.getLbContrasena().setText(mensajes.getString("contrasena"));
+	ventanaIniciarSecion.getLbUsuario().setText(mensajes.getString("usuario"));
+	ventanaIniciarSecion.getBtnRegistrar().setText(mensajes.getString("iniciar"));
     }
     /**
      * @param args the command line arguments

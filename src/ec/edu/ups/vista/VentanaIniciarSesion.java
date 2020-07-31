@@ -139,10 +139,11 @@ public class VentanaIniciarSesion extends javax.swing.JInternalFrame {
 	String usuario = txtUsuario.getText();
 	String contra = new String(txtContrasena.getPassword());
         if(usuario.isEmpty() || contra.isEmpty()){
-            //JOptionPane.showMessageDialog(this, mensajeError);
+            JOptionPane.showMessageDialog(this, mensajeError);
         } else {
-	    controladorUsuario.iniciarSesion(usuario, contra);
-            //JOptionPane.showMessageDialog(this, mensaje);
+	    if(controladorUsuario.iniciarSesion(usuario, contra));{
+		JOptionPane.showMessageDialog(this, mensaje);
+	    }
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
